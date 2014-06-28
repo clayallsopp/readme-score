@@ -2,6 +2,19 @@
 
 TODO: Write a gem description
 
+```ruby
+url = "https://raw.githubusercontent.com/CocoaPods/cocoadocs.org/master/README.md"
+score = ReadmeScore.for(url)
+score.total_score
+# => 90
+score.text_score
+# => 70
+score.bonus_score
+# => 20
+score.bonus_scores
+# => {has_gifs: 10, has_tables: 10}
+```
+
 ## Installation
 
 Add this line to your application's Gemfile:
