@@ -22,7 +22,7 @@ module ReadmeScore
         @request_url ||= begin
           begin
             uri = URI.parse(@url)
-            raise Break if uri.host != "github.com"
+            raise Break unless ["github.com", "www.github.com"].include?(uri.host)
             raise Break if uri.path.split("/").reject(&:empty?).count != 2
             uri.host = "raw.githubusercontent.com"
             original_path = uri.path
@@ -30,6 +30,7 @@ module ReadmeScore
             POSSIBLE_README_FILES.each {|f|
               uri.path = File.join(original_path, "master/#{f}")
               use_url = uri.to_s if valid_url?(uri.to_s)
+              break if use_url
             }
             raise Break unless use_url
             return use_url
@@ -55,7 +56,7 @@ module ReadmeScore
       end
 
       def markdown?
-        request_url.end_with?(".md")
+        request_url.downcase.end_with?(".md")
       end
 
       private
