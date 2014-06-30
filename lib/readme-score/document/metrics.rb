@@ -1,6 +1,10 @@
 module ReadmeScore
   class Document
-    class Calculator
+    class Metrics
+      METRICS = [
+        :number_of_links, :number_of_code_blocks,
+        :number_of_non_code_sections
+      ]
       def initialize(noko_or_html)
         @noko = Util.to_noko(noko_or_html)
       end
@@ -22,6 +26,9 @@ module ReadmeScore
       end
 
       def code_block_to_paragraph_ratio
+        if number_of_paragraphs.to_f == 0.0
+          return 0
+        end
         number_of_code_blocks.to_f / number_of_paragraphs.to_f
       end
 
@@ -35,6 +42,14 @@ module ReadmeScore
         all_links.reject {|a|
           internal_link?(a)
         }.count
+      end
+
+      def has_gifs?
+        !all_gifs.empty?
+      end
+
+      def has_tables?
+        !all_tables.empty?
       end
 
       private
@@ -52,6 +67,16 @@ module ReadmeScore
 
         def all_lists
           @noko.search('ol') + @noko.search('ul')
+        end
+
+        def all_gifs
+          all_links.select {|a|
+            a['href'].downcase.include?(".gif")
+          }
+        end
+
+        def all_tables
+          @noko.search('table')
         end
 
         def internal_link?(a)

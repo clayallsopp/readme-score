@@ -21,8 +21,11 @@ Gem::Specification.new do |spec|
   spec.add_dependency "nokogiri", ">= 1.6.0"
   spec.add_dependency "unirest", ">= 1.1.0"
   spec.add_dependency "redcarpet", ">= 3.1.0"
+  spec.add_dependency "octokit", ">= 3.2.0"
+  spec.add_dependency "statsample", ">= 1.3.0"
 
   spec.add_development_dependency "bundler", "~> 1.5"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "webmock"
+  spec.add_development_dependency "dotenv"
 end

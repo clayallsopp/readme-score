@@ -3,47 +3,35 @@ require 'uri/http'
 module ReadmeScore
   class Document
 
-    def self.load(url)
-      loader = Loader.new(url)
-      loader.load!
-      new(loader.html)
-    end
-
     class Loader
-      POSSIBLE_README_FILES = ["README.md", "readme.md"]
+      POSSIBLE_README_FILES = ["README.md", "readme.md", "ReadMe.md"]
       class Break < StandardError; end
+
+      attr_accessor :response
 
       def initialize(url)
         @url = url
       end
 
-      def request_url
-        # detect github repo URLs
-        @request_url ||= begin
-          begin
-            uri = URI.parse(@url)
-            raise Break unless ["github.com", "www.github.com"].include?(uri.host)
-            raise Break if uri.path.split("/").reject(&:empty?).count != 2
-            uri.host = "raw.githubusercontent.com"
-            original_path = uri.path
-            use_url = nil
-            POSSIBLE_README_FILES.each {|f|
-              uri.path = File.join(original_path, "master/#{f}")
-              use_url = uri.to_s if valid_url?(uri.to_s)
-              break if use_url
-            }
-            raise Break unless use_url
-            return use_url
-          rescue URI::InvalidURIError
-          rescue Break
-          end
-
-          @url
-        end
+      def github_repo_name
+        uri = URI.parse(@url)
+        return nil unless ["github.com", "www.github.com"].include?(uri.host)
+        path_components = uri.path.split("/")
+        return nil if path_components.reject(&:empty?).count != 2
+        path_components[-2..-1].join("/")
       end
 
       def load!
-        @response ||= Unirest.get request_url
+        if github_repo_name
+          @markdown = false
+          @response ||= OpenStruct.new.tap {|o|
+            @@client ||= Octokit::Client.new(access_token: ENV['READMESCORE_GITHUB_TOKEN'])
+            o.body = @@client.readme(github_repo_name, :accept => 'application/vnd.github.html').force_encoding("UTF-8")
+          }
+        else
+          @markdown = @url.downcase.end_with?(".md")
+          @response ||= Unirest.get @url
+        end
       end
 
       def html
@@ -56,14 +44,8 @@ module ReadmeScore
       end
 
       def markdown?
-        request_url.downcase.end_with?(".md")
+        @markdown == true
       end
-
-      private
-        def valid_url?(url)
-          @response = Unirest.get(url)
-          @response.code == 200
-        end
     end
   end
 end

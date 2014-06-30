@@ -1,6 +1,6 @@
 require File.expand_path('../../spec_helper', __FILE__)
 
-describe ReadmeScore::Document::Calculator do
+describe ReadmeScore::Document::Metrics do
 
   describe "#number_of_links" do
     it "works" do
@@ -8,7 +8,7 @@ describe ReadmeScore::Document::Calculator do
         <a href="other_thing.html">Other thing</a>
         <p><a href="/other_thing.html">Other thing</a></p>
         <a href="http://google.com">Something there</a>}
-      calc = ReadmeScore::Document::Calculator.new(html)
+      calc = ReadmeScore::Document::Metrics.new(html)
       calc.number_of_links.should == 3
     end
   end
@@ -64,7 +64,7 @@ describe ReadmeScore::Document::Calculator do
 
   <p>Pretty simple, right?</p>
       }
-      calc = ReadmeScore::Document::Calculator.new(html)
+      calc = ReadmeScore::Document::Metrics.new(html)
       calc.code_block_to_paragraph_ratio.should == (2.0 / 3.0)
     end
   end
@@ -88,7 +88,7 @@ describe ReadmeScore::Document::Calculator do
   <li></li>
 </ul>
       }
-      calc = ReadmeScore::Document::Calculator.new(html)
+      calc = ReadmeScore::Document::Metrics.new(html)
       calc.number_of_non_code_sections.should == 4
     end
   end
