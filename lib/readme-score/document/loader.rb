@@ -15,6 +15,14 @@ module ReadmeScore
         path_components[-2..-1].join("/")
       end
 
+      def self.is_github_repo_slug?(possible_repo)
+        !!(/^(\w|-)+\/(\w|-)+$/.match(possible_repo))
+      end
+
+      def self.is_url?(possible_url)
+        !!(/https?:\/\//.match(possible_url))
+      end
+
       attr_accessor :response
 
       def initialize(url)

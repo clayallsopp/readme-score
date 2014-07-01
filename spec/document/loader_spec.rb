@@ -1,6 +1,30 @@
 require File.expand_path('../../spec_helper', __FILE__)
 
 describe ReadmeScore::Document::Loader do
+  describe ".is_github_repo_slug?" do
+    it "works" do
+      ReadmeScore::Document::Loader.is_github_repo_slug?("afnetworking/afnetworking").should == true
+      ReadmeScore::Document::Loader.is_github_repo_slug?("afnetworking/").should == false
+      ReadmeScore::Document::Loader.is_github_repo_slug?("afnetworking").should == false
+      ReadmeScore::Document::Loader.is_github_repo_slug?("http://github.com/afnetworking/afnetworking").should == false
+      ReadmeScore::Document::Loader.is_github_repo_slug?("afnetworking/afnetworking/").should == false
+      ReadmeScore::Document::Loader.is_github_repo_slug?("afnetworking/afnetworking/z").should == false
+    end
+  end
+
+  describe ".is_url?" do
+    it "works" do
+      ReadmeScore::Document::Loader.is_url?("http://github.com/afnetworking/afnetworking").should == true
+      ReadmeScore::Document::Loader.is_url?("https://github.com/afnetworking/afnetworking").should == true
+      ReadmeScore::Document::Loader.is_url?("https://something.com/").should == true
+      ReadmeScore::Document::Loader.is_url?("afnetworking/afnetworking").should == false
+      ReadmeScore::Document::Loader.is_url?("afnetworking/").should == false
+      ReadmeScore::Document::Loader.is_url?("afnetworking").should == false
+      ReadmeScore::Document::Loader.is_url?("afnetworking/afnetworking/").should == false
+      ReadmeScore::Document::Loader.is_url?("afnetworking/afnetworking/z").should == false
+    end
+  end
+
   describe "#markdown?" do
     describe "with .md link" do
       it "is true" do
