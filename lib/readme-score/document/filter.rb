@@ -18,11 +18,13 @@ module ReadmeScore
       def remove_license!
         remove_heading_sections_named("license")
         remove_heading_sections_named("licensing")
+        remove_heading_sections_named("copyright")
       end
 
       def remove_contact!
         remove_heading_sections_named("contact")
         remove_heading_sections_named("author")
+        remove_heading_sections_named("credits")
       end
 
       def remove_service_images!
