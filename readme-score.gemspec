@@ -8,9 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = ReadmeScore::VERSION
   spec.authors       = ["Clay Allsopp"]
   spec.email         = ["clay.allsopp@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = "Gives a score for README.md"
+  spec.homepage      = "https://github.com/clayallsopp/readme-score"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -22,7 +21,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "unirest", ">= 1.1.0"
   spec.add_dependency "redcarpet", ">= 3.1.0"
   spec.add_dependency "octokit", ">= 3.2.0"
-  spec.add_dependency "statsample", ">= 1.3.0"
 
   spec.add_development_dependency "bundler", "~> 1.5"
   spec.add_development_dependency "rake"
