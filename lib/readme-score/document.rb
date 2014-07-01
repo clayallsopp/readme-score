@@ -6,7 +6,7 @@ require 'readme-score/document/score'
 
 module ReadmeScore
   class Document
-    attr_accessor :html, :filter, :text_metrics, :bonus_metrics
+    attr_accessor :html, :filter, :metrics
 
     def self.load(url)
       loader = Loader.new(url)
@@ -17,8 +17,7 @@ module ReadmeScore
     def initialize(html)
       @html = html
       @noko = Nokogiri::HTML.fragment(@html)
-      @text_metrics = Document::Metrics.new(html_for_analysis)
-      @bonus_metrics = Document::Metrics.new(@html)
+      @metrics = Document::Metrics.new(html_for_analysis)
     end
 
     # @return [String] HTML string ready for analysis
@@ -28,7 +27,7 @@ module ReadmeScore
     end
 
     def score
-      @score ||= Score.new(text_metrics, bonus_metrics)
+      @score ||= Score.new(metrics)
     end
   end
 end

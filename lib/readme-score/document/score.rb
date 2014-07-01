@@ -2,39 +2,77 @@ module ReadmeScore
   class Document
     class Score
 
-      attr_accessor :text_metrics, :bonus_metrics
-
-      def initialize(text_metrics, bonus_metrics)
-        @text_metrics = text_metrics
-        @bonus_metrics = bonus_metrics
-      end
-
-      def text_score
-        equation_value = Equation.default.value_for(@text_metrics)
-        [100.0, equation_value].min
-      end
-
-      def bonus_scores
-        @@bonuses ||= {
-          has_gifs: 10,
-          has_tables: 10
+      SCORE_METRICS = [
+        {
+          metric: :number_of_code_blocks,
+          value_per: 5,
+          max: 40
+        },
+        {
+          metric: :number_of_non_code_sections,
+          value_per: 5,
+          max: 30
+        },
+        {
+          metric: :has_lists?,
+          value: 10
+        },
+        {
+          metric: :number_of_images,
+          value_per: 5,
+          max: 15
+        },
+        {
+          metric: :number_of_gifs,
+          value_per: 5,
+          max: 15
+        },
+        {
+          metric: :cumulative_code_block_length,
+          value_per: 0.0009475244447271192,
+          max: 10
+        },
+        {
+          metric_name: :low_code_block_penalty,
+          metric: :number_of_code_blocks,
+          if_less_than: 3,
+          value: -10
         }
-        Hash[@@bonuses.map {|k, v|
-          qualifies_for_bonus = bonus_metrics.send("#{k}?")
-          [k, qualifies_for_bonus ? v : 0]
-        }.select {|_, v|
-          v > 0
-        }]
+      ]
+
+      attr_accessor :metrics
+
+      def initialize(metrics)
+        @metrics = metrics
       end
 
-      def bonus_score
-        bonus_scores.reduce(0) {|memo, (_, v)|
-          memo += v
+      def score_breakdown
+        breakdown = {}
+        SCORE_METRICS.each { |h|
+          metric_option = OpenStruct.new(h)
+          metric_name = metric_option.metric_name || metric_option.metric
+          metric_score_value = 0
+          # points for each occurance
+          if metric_option.value_per
+            metric_score_value = [metrics.send(metric_option.metric) * metric_option.value_per, metric_option.max].min
+          elsif metric_option.if_less_than
+            if metrics.send(metric_option.metric) < metric_option.if_less_than
+              metric_score_value = metric_option.value
+            end
+          else
+            metric_score_value = metrics.send(metric_option.metric) ? metric_option.value : 0
+          end
+          breakdown[metric_name] = metric_score_value
         }
+        breakdown
       end
 
       def total_score
-        text_score + bonus_score
+        score = 0
+        score_breakdown.each {|metric, points|
+          score += points.to_i
+        }
+        [score, 100].min
       end
       alias_method :to_i, :total_score
 

@@ -1,12 +1,15 @@
 module ReadmeScore
   class Document
     class Metrics
-      METRICS = [
-        :number_of_links, :number_of_code_blocks,
-        :number_of_non_code_sections
+      EQUATION_METRICS = [
+        :cumulative_code_block_length
       ]
       def initialize(noko_or_html)
         @noko = Util.to_noko(noko_or_html)
+      end
+
+      def cumulative_code_block_length
+        all_code_blocks.inner_html.length
       end
 
       def number_of_links
@@ -44,8 +47,24 @@ module ReadmeScore
         }.count
       end
 
+      def has_lists?
+        all_lists.length > 0
+      end
+
+      def has_images?
+        number_of_images > 0
+      end
+
+      def number_of_images
+        all_images.count
+      end
+
       def has_gifs?
-        !all_gifs.empty?
+        number_of_gifs > 0
+      end
+
+      def number_of_gifs
+        all_gifs.length
       end
 
       def has_tables?
@@ -69,9 +88,16 @@ module ReadmeScore
           @noko.search('ol') + @noko.search('ul')
         end
 
+        def all_images
+          @noko.search('img')
+        end
+
         def all_gifs
-          all_links.select {|a|
-            a['href'].downcase.include?(".gif")
+          all_images.select {|a|
+            source_attributes = ['src', 'data-canonical-src']
+            source_attributes.map {|_attr|
+              a[_attr] && a[_attr].downcase.include?(".gif")
+            }.any?
           }
         end
 
