@@ -63,3 +63,11 @@ score = ReadmeScore.for(html)
 score.total_score
 # => 95
 ```
+
+## Configuration
+
+### Environment Variables
+
+| ENV                                                          | Description |
+|---------------------------------------------------------------|-------|
+| READMESCORE_GITHUB_TOKEN                     | If scoring a Github repo, ReadmeScore will try to grab the canonical representation via the Github API. By default, [unauthenticated requests are limited](https://developer.github.com/v3/#rate-limiting) to 60/hour. Set this env variable to increase that limited to 5k/hour.    |
