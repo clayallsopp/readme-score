@@ -104,7 +104,9 @@ end
 task :compare_seeds do
   seed_data = loaded_seed_data
   documents = seed_data.map {|d|
-    [d, ReadmeScore::Document.load(d.readme)]
+    html = IO.read(d.cache_path)
+    [d, ReadmeScore::Document.new(html)]
+    # [d, ReadmeScore::Document.load(d.readme)]
   }
   differentials = []
   documents.each {|seed, d|
@@ -114,6 +116,7 @@ task :compare_seeds do
     differentials << (predection - calculated).abs
     puts "Predection: #{predection}; Equation: #{calculated}"
   }
+  puts differentials
   puts "Average diff: #{differentials.to_scale.mean}"
 end
 
