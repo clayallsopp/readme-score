@@ -40,9 +40,7 @@ describe ReadmeScore::Document::Filter do
           <p>Hello</p>}
         filter = ReadmeScore::Document::Filter.new(html)
         string = filter.filtered_html!
-        string.should == %Q{
-          <h4>Something else</h4>
-          <p>Hello</p>}
+        string.strip.should == ""
       end
     end
 
@@ -83,9 +81,7 @@ describe ReadmeScore::Document::Filter do
           <p>Hello</p>}
         filter = ReadmeScore::Document::Filter.new(html)
         string = filter.filtered_html!
-        string.should == %Q{
-          <h4>Something else</h4>
-          <p>Hello</p>}
+        string.strip.should == ""
       end
     end
 

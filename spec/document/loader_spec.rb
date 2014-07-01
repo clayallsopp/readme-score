@@ -26,15 +26,18 @@ describe ReadmeScore::Document::Loader do
   end
 
   describe "#markdown?" do
-    describe "with .md link" do
-      it "is true" do
-        url = "http://www.test.com/readme.md"
-        stub_request(:get, url)
+    ReadmeScore::Document::Loader::MARKDOWN_EXTENSIONS.each {|extension|
+      describe "with .#{extension} link" do
+        it "is true" do
+          url = "http://www.test.com/readme.#{extension}"
+          stub_request(:get, url)
 
-        loader = ReadmeScore::Document::Loader.new(url)
-        loader.markdown?.should == true
+          loader = ReadmeScore::Document::Loader.new(url)
+          loader.load!
+          loader.markdown?.should == true
+        end
       end
-    end
+    }
 
     describe "without .md link" do
       it "is false" do

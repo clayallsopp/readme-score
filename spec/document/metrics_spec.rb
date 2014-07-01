@@ -36,7 +36,7 @@ describe ReadmeScore::Document::Metrics do
 
   <p>Pretty simple, right?</p>
       }
-      calc = ReadmeScore::Document::Calculator.new(html)
+      calc = ReadmeScore::Document::Metrics.new(html)
       calc.number_of_code_blocks.should == 2
     end
   end
