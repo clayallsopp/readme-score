@@ -28,8 +28,6 @@ def seed_data(d)
   buffer << d.html
 end
 
-require 'statsample'
-
 def analyze(document_tuples)
   document_tuples.each {|seed, d|
     # puts seed_data(d)
@@ -123,4 +121,10 @@ task :console do
   require 'irb'
   ARGV.clear
   IRB.start
+end
+
+task :default => [:spec]
+desc 'run Rspec specs'
+task :spec do
+  sh 'rspec spec'
 end
