@@ -1,19 +1,26 @@
-# Readme::Score
+# ReadmeScore
 
-TODO: Write a gem description
+Gives a complexity score for a README.
 
-```ruby
-url = "https://raw.githubusercontent.com/CocoaPods/cocoadocs.org/master/README.md"
-score = ReadmeScore.for(url)
-score.total_score
-# => 90
-score.text_score
-# => 70
-score.bonus_score
-# => 20
-score.bonus_scores
-# => {has_gifs: 10, has_tables: 10}
-```
+Example score:
+
+| Repo                                                          | Score |
+|---------------------------------------------------------------|-------|
+| https://github.com/RolandasRazma/RRFPSBar                     | 16    |
+| https://github.com/JRG-Developer/MediaRSSParser               | 35    |
+| https://github.com/ruslanskorb/RSDayFlow                      | 35    |
+| https://github.com/samnung/AFHTTPFileUpdateOperation          | 31    |
+| https://github.com/schneiderandre/ASCFlatUIColor              | 65    |
+| https://github.com/daltoniam/BootstrapUIKit                   | 60    |
+| https://github.com/AFNetworking/AFNetworking                  | 95    |
+| https://github.com/tomersh/AppleGuice                         | 85    |
+| https://github.com/kevindelord/DKHelper                       | 25    |
+| https://github.com/saturngod/IAPHelper                        | 75    |
+| https://github.com/alskipp/ASValueTrackingSlider              | 87    |
+| https://github.com/phranck/CNTreeNode                         | 25    |
+| https://github.com/dasdom/DDHDynamicViewControllerTransitions | 91    |
+| https://github.com/RestKit/RestKit                            | 100   |
+
 
 ## Installation
 
@@ -31,12 +38,28 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Pass in a URL:
 
-## Contributing
+```ruby
+url = "https://raw.githubusercontent.com/AFNetworking/AFNetworking/master/README.md"
+score = ReadmeScore.for(url)
+score.total_score
+# => 95
+```
 
-1. Fork it ( http://github.com/<my-github-username>/readme-score/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+Pass in a Github Repo:
+
+```ruby
+score = ReadmeScore.for("afnetworking/afnetworking")
+score.total_score
+# => 95
+```
+
+Pass in HTML:
+
+```ruby
+html = "AFNetworking is a delightful networking library for iOS and Mac OS X...."
+score = ReadmeScore.for(html)
+score.total_score
+# => 95
+```
