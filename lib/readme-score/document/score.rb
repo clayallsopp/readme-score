@@ -66,6 +66,7 @@ module ReadmeScore
         }
         breakdown
       end
+      alias_method :breakdown, :score_breakdown
 
       def total_score
         score = 0
