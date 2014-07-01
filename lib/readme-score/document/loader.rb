@@ -7,6 +7,14 @@ module ReadmeScore
       POSSIBLE_README_FILES = ["README.md", "readme.md", "ReadMe.md"]
       class Break < StandardError; end
 
+      def self.github_repo_name(url)
+        uri = URI.parse(url)
+        return nil unless ["github.com", "www.github.com"].include?(uri.host)
+        path_components = uri.path.split("/")
+        return nil if path_components.reject(&:empty?).count != 2
+        path_components[-2..-1].join("/")
+      end
+
       attr_accessor :response
 
       def initialize(url)
@@ -14,11 +22,7 @@ module ReadmeScore
       end
 
       def github_repo_name
-        uri = URI.parse(@url)
-        return nil unless ["github.com", "www.github.com"].include?(uri.host)
-        path_components = uri.path.split("/")
-        return nil if path_components.reject(&:empty?).count != 2
-        path_components[-2..-1].join("/")
+        Loader.github_repo_name(@url)
       end
 
       def load!
