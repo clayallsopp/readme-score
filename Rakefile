@@ -118,3 +118,9 @@ task :compare_seeds do
   }
   puts "Average diff: #{differentials.to_scale.mean}"
 end
+
+task :console do
+  require 'irb'
+  ARGV.clear
+  IRB.start
+end
