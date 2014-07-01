@@ -4,7 +4,7 @@ module ReadmeScore
   class Document
 
     class Loader
-      POSSIBLE_README_FILES = ["README.md", "readme.md", "ReadMe.md"]
+      MARKDOWN_EXTENSIONS = %w{md mdown markdown}
       class Break < StandardError; end
 
       def self.github_repo_name(url)
@@ -41,7 +41,7 @@ module ReadmeScore
             o.body = @@client.readme(github_repo_name, :accept => 'application/vnd.github.html').force_encoding("UTF-8")
           }
         else
-          @markdown = @url.downcase.end_with?(".md")
+          @markdown = MARKDOWN_EXTENSIONS.select {|ext| @url.downcase.end_with?(".#{ext}")}.any?
           @response ||= Unirest.get @url
         end
       end
