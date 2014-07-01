@@ -1,5 +1,7 @@
 # ReadmeScore
 
+[![Build Status](https://travis-ci.org/clayallsopp/readme-score.svg)](https://travis-ci.org/clayallsopp/readme-score)
+
 Gives a complexity score for a README.
 
 Example score:
