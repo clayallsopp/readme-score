@@ -50,8 +50,45 @@ describe ReadmeScore::Document::Loader do
     end
   end
 
+  describe "#html" do
+    describe "without markdown" do
+      it "works" do
+        loader = ReadmeScore::Document::Loader.new("http://something.com/thing.html")
+        loader.markdown = false
+        loader.response = double('HTTP response', body: "<h1>Hello</h1>")
+        loader.html.should == "<h1>Hello</h1>"
+      end
+    end
+
+    describe "with markdown" do
+      it "works" do
+        loader = ReadmeScore::Document::Loader.new("http://something.com/thing.md")
+        loader.markdown = true
+        loader.response = double('Markdown response', body: "# Hello")
+        expect(loader).to receive(:parse_markdown).with("# Hello")
+        loader.html
+      end
+    end
+  end
+
 
   describe "#load!" do
+    describe "when github api is turned off" do
+      before do
+        ReadmeScore.use_github_api = false
+      end
+
+      after do
+        ReadmeScore.use_github_api = true
+      end
+
+      it "loads via approximation" do
+        loader = ReadmeScore::Document::Loader.new("http://github.com/repo/user")
+        expect(loader).to receive(:load_via_github_approximation!)
+        loader.load!
+      end
+    end
+
     describe "with non-github links" do
       it "works" do
         url = "http://www.test.com/readme.md"

@@ -24,4 +24,12 @@ module ReadmeScore
     end
     document.score
   end
+
+  def use_github_api?
+    !@reject_github_api
+  end
+
+  def use_github_api=(use_github_api)
+    @reject_github_api = !use_github_api
+  end
 end
