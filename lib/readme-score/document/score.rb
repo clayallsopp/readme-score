@@ -80,6 +80,10 @@ module ReadmeScore
       def to_f
         to_i.to_f
       end
+
+      def inspect
+        "#<#{self.class} - #{total_score}>"
+      end
     end
   end
 end

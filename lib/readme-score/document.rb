@@ -29,5 +29,9 @@ module ReadmeScore
     def score
       @score ||= Score.new(metrics)
     end
+
+    def inspect
+      "#<#{self.class}>"
+    end
   end
 end

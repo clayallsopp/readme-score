@@ -71,6 +71,10 @@ module ReadmeScore
         !all_tables.empty?
       end
 
+      def inspect
+        "#<#{self.class}>"
+      end
+
       private
         def all_links
           @noko.search('a')
