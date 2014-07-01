@@ -1,7 +1,7 @@
 module ReadmeScore
   class Document
     class Filter
-      SERVICES = ["travis-ci.org", "codeclimate.com", "gemnasium.com"]
+      SERVICES = ["travis-ci.org", "codeclimate.com", "gemnasium.com", "cocoadocs.org"]
 
       def initialize(noko_or_html)
         @noko = Util.to_noko(noko_or_html, true)
@@ -16,11 +16,13 @@ module ReadmeScore
       end
 
       def remove_license!
-        @had_license = remove_heading_sections_named("license")
+        remove_heading_sections_named("license")
+        remove_heading_sections_named("licensing")
       end
 
       def remove_contact!
-        @had_contact = remove_heading_sections_named("contact")
+        remove_heading_sections_named("contact")
+        remove_heading_sections_named("author")
       end
 
       def remove_service_images!
@@ -38,7 +40,7 @@ module ReadmeScore
               if heading.content.downcase == prefix
                 # hit - remove everything until the next heading
                 while sibling = heading.next_sibling
-                  if sibling.name.downcase.start_with?("h")
+                  if sibling.name.downcase.start_with?(heading.name)
                     break
                   else
                     sibling.remove
