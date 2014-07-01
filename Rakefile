@@ -40,7 +40,7 @@ def analyze(document_tuples)
 
   Statsample::Analysis.store(Statsample::Regression::Multiple) do |suite|
     metric_hash = {}
-    ReadmeScore::Document::Metrics::METRICS.each do |metric|
+    ReadmeScore::Document::Metrics::EQUATION_METRICS.each do |metric|
       puts metric
       metric_hash[metric] = documents.map(&:text_metrics).map(&metric.to_proc).to_scale
     end
