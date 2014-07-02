@@ -4,6 +4,8 @@
 
 Gives a complexity score for a README.
 
+[Check scores of any repo: http://clayallsopp.github.io/readme-score](http://clayallsopp.github.io/readme-score)
+
 Example score:
 
 | Repo                                                          | Score |
