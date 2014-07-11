@@ -14,6 +14,10 @@ module ReadmeScore
 
   module_function
   def for(url_or_html)
+    document(url_or_html).score
+  end
+
+  def document(url_or_html)
     document = nil
     if Document::Loader.is_url?(url_or_html)
       document = Document.load(url_or_html)
@@ -22,7 +26,7 @@ module ReadmeScore
     else
       document = Document.new(url_or_html)
     end
-    document.score
+    document
   end
 
   def use_github_api?
