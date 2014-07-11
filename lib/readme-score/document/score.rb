@@ -73,7 +73,7 @@ module ReadmeScore
         score_breakdown.each {|metric, points|
           score += points.to_i
         }
-        [score, 100].min
+        [[score, 100].min, 0].max
       end
       alias_method :to_i, :total_score
 
