@@ -32,4 +32,12 @@ module ReadmeScore
   def use_github_api=(use_github_api)
     @reject_github_api = !use_github_api
   end
+
+  def github_api_token=(github_api_token)
+    @github_api_token = github_api_token
+  end
+
+  def github_api_token
+    @github_api_token || ENV['READMESCORE_GITHUB_TOKEN']
+  end
 end

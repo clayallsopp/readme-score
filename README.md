@@ -74,6 +74,8 @@ score.total_score
 
 - `ReadmeScore.use_github_api = <boolean>` - whether or not to use the Github API when loading a Github repo's readme. If `false`, will attempt to find the correct readme URL without the API (which could fail unexpectedly). Defaults to `true`
 
+- `ReadmeScore.github_api_token = <token>` - a token to use with the Github API. Supercedes the ENV variable.
+
 ### Environment Variables
 
 | ENV                                                          | Description |

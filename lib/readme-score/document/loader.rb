@@ -57,7 +57,7 @@ module ReadmeScore
       def load_via_github_api!
         @markdown = false
         @response ||= OpenStruct.new.tap {|o|
-          @@client ||= Octokit::Client.new(access_token: ENV['READMESCORE_GITHUB_TOKEN'])
+          @@client ||= Octokit::Client.new(access_token: ReadmeScore.github_api_token)
           o.body = @@client.readme(github_repo_name, :accept => 'application/vnd.github.html').force_encoding("UTF-8")
         }
       end
