@@ -19,7 +19,7 @@ module ReadmeScore
       end
 
       def self.is_github_repo_slug?(possible_repo)
-        !!(/^(\w|-)+\/(\w|-)+$/.match(possible_repo))
+        !!(/^(\w|-)+\/(\w|-|\.)+$/.match(possible_repo))
       end
 
       def self.is_url?(possible_url)
