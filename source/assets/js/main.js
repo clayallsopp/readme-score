@@ -67,6 +67,7 @@ var Dial = function() {
 var Score = function(data) {
   this.score = parseInt(data.score);
   this.url = data.url;
+  this.breakdown = data.breakdown;
 
   return this;
 }
@@ -74,7 +75,7 @@ var Score = function(data) {
 var ScoreAPI = {
   find: function(urlOrSlug, callback, errorCallback) {
     var url = "http://readme-score-api.herokuapp.com/score";
-    $.get(url, {url: urlOrSlug}, function(data, textStatus) {
+    $.get(url, {url: urlOrSlug, human_breakdown: "true"}, function(data, textStatus) {
         if (textStatus === 'error' || textStatus === 'timeout') {
           errorCallback();
         }
@@ -101,12 +102,47 @@ var Result = function() {
 
   var dial = new Dial();
 
+  var breakdownTable = function() {
+    return $(".scoreboard-row table tbody");
+  }
+
+  var setBreakdown = function(breakdown) {
+    breakdownTable().empty();
+    var breakdowns = [];
+    for (var description in breakdown) {
+      var scorePossibleTuple = breakdown[description];
+      var score = scorePossibleTuple[0];
+      score = scorePossibleTuple;
+      var possible = scorePossibleTuple[1];
+      possible = 40;
+      breakdowns.push({description: description, score: score, possible: possible});
+    };
+    breakdowns.sort(function(a, b) {
+      if (a.score == b.score) {
+        return a.possible > b.possible;
+      }
+      return a.score > b.score;
+    });
+    for (var i = breakdowns.length - 1; i >= 0; i--) {
+      var item = breakdowns[i];
+      addBreakdownItem(item.score, item.possible, item.description);
+    };
+  }
+
+  var addBreakdownItem = function(score, possible, description) {
+    var el = "<tr>" +
+              '<td class="breakdown-column"><span class="breakdown-score">' + score + '</span> out of ' + possible + '</td>' +
+              '<td>' + description + '</td>' +
+            '</tr>'
+    breakdownTable().append(el);
+  }
+
   this.show = function(score) {
     $(".results-container").show();
     $(".repo-name").text(score.url);
     $(".repo-score").text(score.score);
     $(".repo-score").removeClass("red green yellow").addClass(scoreToColor[score.score]);
-
+    setBreakdown(score.breakdown);
 
     dial.rotateToScore(score.score);
 
@@ -118,6 +154,7 @@ $(function() {
 
     $("#find-score").click(function() {
       ScoreAPI.find($("#score-url").val(), function(score) {
+        window.score = score;
         result.show(score);
       }, function() {
         // an error happened :(
