@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="108px" height="34px" viewBox="0 0 108 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.0.3 (7891) - http://www.bohemiancoding.com/sketch -->
+    <title>dial</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="81.1397016%" x2="50%" y2="81.1397016%" id="linearGradient-1">
+            <stop stop-color="#2E4256" offset="0%"></stop>
+            <stop stop-color="#3B536B" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Desktop" sketch:type="MSArtboardGroup" transform="translate(-497.000000, -655.000000)">
+            <g id="dial" sketch:type="MSLayerGroup" transform="translate(551.000000, 672.000000) scale(1, -1) rotate(-90.000000) translate(-551.000000, -672.000000) translate(534.000000, 618.000000)">
+                <path d="M32.8518071,84.8713846 L17,0 L1.14819288,84.8713846 C0.406753993,86.7776559 0,88.8508134 0,91.0188679 C0,100.397288 7.61115925,108 17,108 C26.3888407,108 34,100.397288 34,91.0188679 C34,88.8508134 33.593246,86.7776559 32.8518071,84.8713846 Z" id="Triangle-1" fill="url(#linearGradient-1)" sketch:type="MSShapeGroup"></path>
+                <ellipse id="Oval-7" fill="#1C2C3C" sketch:type="MSShapeGroup" cx="17.1265824" cy="90.753625" rx="8.234375" ry="8.16585366"></ellipse>
+            </g>
+        </g>
+    </g>
+</svg>

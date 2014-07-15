@@ -18,25 +18,96 @@
         <h1>ScoreMe</h1>
         <p>Check out the complexity for a Github repo:</p>
         <div class="row">
-          <div class="col-lg-6">
-            <div class="input-group">
-              <input id="score-url" type="text" class="form-control" placeholder="afnetworking/afnetworking" />
-              <span class="input-group-btn">
-                <button id="find-score" class="btn btn-primary" type="button">Go!</button>
-              </span>
-            </div><!-- /input-group -->
-          </div><!-- /.col-lg-6 -->
+          <div class="col-md-4 col-md-offset-4 input-col">
+            <input id="score-url" type="text" class="form-control" placeholder="afnetworking/afnetworking" />
+            <button id="find-score" class="btn" type="button">Go!</button>
+          </div><!-- /.col-md-6 -->
         </div><!-- /.row -->
 
         <br />
 
         <div class="row">
-          <div class="col-lg-6">
+          <div class="col-md-6">
             <div class="alert alert-success" role="alert" id="score-container" style="display: none;">Has a score of <strong id="score"></strong></div>
           </div>
         </div><!-- /.row -->
+      </div>
+    </div>
 
+    <div class="container results-container">
+      <div class="row score-row">
+        <div class="col-md-12">
+          <h2><span class="repo-name">clayallsopp/formotion</span> scored an <span class="repo-score green">82</span></h2>
+        </div>
+      </div>
 
+      <div class="row">
+        <div class="score-meter">
+          <img src="assets/images/meter.svg" />
+          <img id="dial" src="assets/images/dial.svg" />
+        </div>
+      </div>
+
+      <div class="row scoreboard-row">
+        <h2>Scoreboard</h2>
+        <table>
+          <tbody>
+            <tr>
+              <td class="breakdown-column"><span class="breakdown-score">40</span> out of 40</td>
+              <td>Number of code blocks</td>
+            </tr>
+            <tr>
+              <td class="breakdown-column"><span class="breakdown-score">10</span> out of 30</td>
+              <td>Penalty for few code blocks (all or nothing)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="row embed-row">
+        <div class="col-md-12">
+          <h2>Embed in your README:</h2>
+        </div>
+        <div class="col-md-5 col-md-offset-3">
+          <input id="image-url" disabled type="text" class="form-control" value="asdasd" />
+        </div>
+        <div class="col-md-1">
+          <button id="copy-image-url" class="btn" type="button">Copy!</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h3>What is this?</h3>
+        </div>
+        <div class="col-md-12">
+          <p>
+            ScoreMe gives you a <mark>numerical score from 0 to 100</mark> for your Github-style README. The intention is to measure <em>complexity</em>, which is a generally correlated with <em>quality</em>.
+          </p>
+
+          <p>
+            It isn't meant to measure if one README is absolutely better than another, but it will give you a good idea if the README is high-quality, needs more work, or somewhere inbetween.
+          </p>
+
+          <p>
+            You can <mark>use this website, <a href="#api">the API</a>, or the <a href="http://github.com/clayallsopp/readme-score">Ruby library</a></mark> to find scores.
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <h3>What are some use cases for ScoreMe?</h3>
+        </div>
+        <div class="col-md-12">
+          <ul>
+            <li>(Part of) a repository quality calculation</li>
+            <li>Open-source-related research</li>
+            <li>Sanity-check for a README you're working with</li>
+          </ul>
+        </div>
       </div>
     </div>
 

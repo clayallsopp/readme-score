@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="340px" height="170px" viewBox="0 0 340 170" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.0.3 (7891) - http://www.bohemiancoding.com/sketch -->
+    <title>meter</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Desktop" sketch:type="MSArtboardGroup" transform="translate(-348.000000, -527.000000)">
+            <g id="meter" sketch:type="MSLayerGroup" transform="translate(348.000000, 527.000000)">
+                <g id="panels" sketch:type="MSShapeGroup">
+                    <path d="M132.00318,170 L0,170 C0,126.381411 16.4274475,86.5996581 43.4330079,56.5040757 L43.4330079,56.5040757 L45.4515398,58.5226076 L137.532827,150.603895 C134.101591,156.277153 132.093451,162.907445 132.00318,170 Z" id="Oval-1" fill="#E74C3C"></path>
+                    <path d="M208.99682,170 L340,170 C340,126.381411 323.572553,86.5996581 296.566992,56.5040757 L296.566992,56.5040757 L294.54846,58.5226076 L203.085308,149.98576 C206.749071,155.793158 208.90325,162.648245 208.99682,170 Z" id="Oval-3" fill="#2ECC71"></path>
+                    <path d="M143.817158,142.74609 L52.5226076,51.4515398 L50.3285666,49.2574988 L50.3285666,49.2574988 C81.0491694,18.8077152 123.328196,0 170,0 C216.67603,0 258.958488,18.8111217 289.679779,49.2657716 L287.494011,51.4515398 L196.67712,142.268431 C189.807804,135.896023 180.608884,132 170.5,132 C160.140932,132 150.737427,136.091254 143.817158,142.74609 Z" id="Oval-2" fill="#F39C12"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

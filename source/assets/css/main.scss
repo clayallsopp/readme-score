@@ -1,9 +1,263 @@
-.jumbotron {
-    h1 {
+/**
+ * @license
+ * MyFonts Webfont Build ID 2843878, 2014-07-10T18:39:34-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: Brandon Grotesque Regular by HVD Fonts
+ * URL: http://www.myfonts.com/fonts/hvdfonts/brandon-grotesque/regular/
+ * 
+ * Webfont: Brandon Grotesque Light by HVD Fonts
+ * URL: http://www.myfonts.com/fonts/hvdfonts/brandon-grotesque/light/
+ * 
+ * 
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=2843878
+ * Licensed pageviews: 10,000
+ * Webfonts copyright: Copyright (c) 2009 by Hannes von Doehren. All rights reserved.
+ * 
+ * © 2014 MyFonts Inc
+*/
+
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("//hello.myfonts.net/count/2b64e6");
+
+  
+@font-face {font-family: 'BrandonGrotesque-Regular';src: url('../fonts/2B64E6_0_0.eot');src: url('../fonts/2B64E6_0_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2B64E6_0_0.woff') format('woff'),url('../fonts/2B64E6_0_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'BrandonGrotesque-Light';src: url('../fonts/2B64E6_1_0.eot');src: url('../fonts/2B64E6_1_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2B64E6_1_0.woff') format('woff'),url('../fonts/2B64E6_1_0.ttf') format('truetype');}
+
+
+@mixin light {
+    font-family: "BrandonGrotesque-Light", Avenir, Arial, sans-serif;
+}
+
+@mixin regular {
+    font-family: "BrandonGrotesque-Regular", Avenir, Arial, sans-serif;
+}
+
+@mixin input-style {
+    height: 40px;
+    background: #ECECEC;
+    @include light;
+    font-size: 20px;
+    color: $grey1;
+    line-height: 29px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border: none;
+
+    &:focus {
+        border: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+
+    $placeholder-color: #a1a1a1;
+
+    &::-webkit-input-placeholder {
+       color: $placeholder-color;
+    }
+
+    &:-moz-placeholder { /* Firefox 18- */
+       color: $placeholder-color;
+    }
+
+    &::-moz-placeholder {  /* Firefox 19+ */
+       color: $placeholder-color;
+    }
+
+    &:-ms-input-placeholder {
+       color: $placeholder-color;
+    }
+}
+
+@mixin button-style {
+    height: 40px;
+    border-radius: 5px;
+    background: $green;
+    color: white;
+    font-size: 21px;
+    line-height: 30px;
+    @include light;
+}
+
+body {
+    font-size: 15px;
+    line-height: 22px;
+    color: #333333;
+    @include regular;
+    background: white;
+}
+
+$green:  #2ECC71;
+$yellow: #F39C12;
+$red: #E74C3C;
+$blue: #5E9ECA;
+
+$grey1: #717171;
+
+@-webkit-keyframes dialmove {
+  0% {
+    animation-timing-function: ease-in;
+    -webkit-transform: rotate(0deg);
+  }
+  50% {
+    animation-timing-function: linear;
+    -webkit-transform: rotate(164deg + 10deg);
+  }
+  70% {
+    animation-timing-function: linear;
+    -webkit-transform: rotate(164deg - 10deg);
+  }
+  85% {
+    animation-timing-function: linear;
+    -webkit-transform: rotate(164deg + 5deg);
+  }
+  95% {
+    animation-timing-function: linear;
+    -webkit-transform: rotate(164deg - 3deg);
+  }
+  100% {
+    animation-timing-function: ease-out;
+    -webkit-transform: rotate(164deg);
+  }
+}
+
+.results-container {
+    display: none;
+    h2 {
+        color: $blue;
         text-align: center;
+        @include light;
+        font-size: 40px;
+        line-height: 57px;
+    }
+
+    .repo-name {
+        color: $blue;
+    }
+
+    .repo-score {
+        &.green {
+            color: $green;
+        }
+        &.yellow {
+            color: $yellow;
+        }
+        &.red {
+            color: $red;
+        }
+    }
+
+    .score-row h2 {
+        margin-bottom: 50px;
+        color: $grey1;
+    }
+
+    .score-meter {
+        position: relative;
+        width: 340px;
+        height: 170px;
+        background: white;
+        margin: 0 auto;
+        margin-bottom: 30px;
+        -webkit-transform: translateZ(0);
+
+        #dial {
+            width: 108px;
+            height: 34px;
+            position: absolute;
+            bottom: -10px;
+            left: 80px;
+            -webkit-transform-origin: 92px 18px;
+            -webkit-transform: rotate(0deg);
+            -webkit-animation-fill-mode: forwards;
+            -webkit-animation-duration: 0.7s;
+
+/*
+            -webkit-animation: dialmove 0.7s;
+            -moz-animation:    dialmove 0.7s;
+            -o-animation:      dialmove 0.7s;
+            animation-fill-mode: forwards;
+            animation:         dialmove 0.7s;*/
+        }
+    }
+
+    .scoreboard-row h2 {
+        margin-bottom: 24px;
+    }
+
+    .scoreboard-row table {
+        margin: 0 auto;
+        margin-bottom: 60px;
+        color: $grey1;
+        font-size: 21px;
+        line-height: 30px;
+
+        tr {
+            height: 50px;
+        }
+        .breakdown-score {
+            color: $blue;
+        }
+        td.breakdown-column {
+            text-align: right;
+            padding-right: 20px;
+        }
+    }
+
+    .embed-row input {
+        @include input-style;
+    }
+
+    .embed-row button {
+        @include button-style;
+        @include regular;
+        font-size: 20px;
+        line-height: 29px;
+    }
+}
+
+.jumbotron {
+    background: white;
+    border-bottom: 2px solid #ECECEC;
+    h1 {
+        margin-top: 0px;
+        margin-bottom: 5px;
+        text-align: center;
+        font-size: 70px;
+        color: #34495E;
+        line-height: 101px;
     }
 
     p {
         text-align: center;
+        font-size: 21px;
+        color: $grey1;
+        line-height: 30px;
+        margin-bottom: 40px;
+    }
+
+    input {
+        @include input-style;
+    }
+
+    button#find-score {
+        @include button-style;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .input-col {
+        position: relative;
     }
 }
