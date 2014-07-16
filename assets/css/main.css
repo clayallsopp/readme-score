@@ -1,0 +1,335 @@
+@charset "UTF-8";
+/**
+ * @license
+ * MyFonts Webfont Build ID 2843878, 2014-07-10T18:39:34-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: Brandon Grotesque Regular by HVD Fonts
+ * URL: http://www.myfonts.com/fonts/hvdfonts/brandon-grotesque/regular/
+ * 
+ * Webfont: Brandon Grotesque Light by HVD Fonts
+ * URL: http://www.myfonts.com/fonts/hvdfonts/brandon-grotesque/light/
+ * 
+ * 
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=2843878
+ * Licensed pageviews: 10,000
+ * Webfonts copyright: Copyright (c) 2009 by Hannes von Doehren. All rights reserved.
+ * 
+ * © 2014 MyFonts Inc
+*/
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("//hello.myfonts.net/count/2b64e6");
+@font-face {
+  font-family: 'BrandonGrotesque-Regular';
+  src: url("../fonts/2B64E6_0_0.eot");
+  src: url("../fonts/2B64E6_0_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B64E6_0_0.woff") format("woff"), url("../fonts/2B64E6_0_0.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'BrandonGrotesque-Light';
+  src: url("../fonts/2B64E6_1_0.eot");
+  src: url("../fonts/2B64E6_1_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B64E6_1_0.woff") format("woff"), url("../fonts/2B64E6_1_0.ttf") format("truetype"); }
+
+/* line 92, ../assets/css/main.scss */
+body {
+  font-size: 15px;
+  line-height: 22px;
+  color: #333333;
+  font-family: "BrandonGrotesque-Regular", Avenir, Arial, sans-serif;
+  background: white; }
+
+@-webkit-keyframes dialmove {
+  /* line 108, ../assets/css/main.scss */
+  0% {
+    animation-timing-function: ease-in;
+    -webkit-transform: rotate(0deg); }
+
+  /* line 112, ../assets/css/main.scss */
+  50% {
+    animation-timing-function: linear;
+    -webkit-transform: rotate(174deg); }
+
+  /* line 116, ../assets/css/main.scss */
+  70% {
+    animation-timing-function: linear;
+    -webkit-transform: rotate(154deg); }
+
+  /* line 120, ../assets/css/main.scss */
+  85% {
+    animation-timing-function: linear;
+    -webkit-transform: rotate(169deg); }
+
+  /* line 124, ../assets/css/main.scss */
+  95% {
+    animation-timing-function: linear;
+    -webkit-transform: rotate(161deg); }
+
+  /* line 128, ../assets/css/main.scss */
+  100% {
+    animation-timing-function: ease-out;
+    -webkit-transform: rotate(164deg); } }
+
+@-webkit-keyframes stretchdelay {
+  /* line 135, ../assets/css/main.scss */
+  0%, 40%, 100% {
+    -webkit-transform: scaleY(0.4); }
+
+  /* line 136, ../assets/css/main.scss */
+  20% {
+    -webkit-transform: scaleY(1); } }
+
+@keyframes stretchdelay {
+  /* line 140, ../assets/css/main.scss */
+  0%, 40%, 100% {
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4); }
+
+  /* line 143, ../assets/css/main.scss */
+  20% {
+    transform: scaleY(1);
+    -webkit-transform: scaleY(1); } }
+
+/* line 149, ../assets/css/main.scss */
+.results-container {
+  display: none;
+  padding-bottom: 40px; }
+  /* line 152, ../assets/css/main.scss */
+  .results-container h2 {
+    color: #5e9eca;
+    text-align: center;
+    font-family: "BrandonGrotesque-Light", Avenir, Arial, sans-serif;
+    font-size: 40px;
+    line-height: 57px; }
+  /* line 160, ../assets/css/main.scss */
+  .results-container .repo-name {
+    color: #5e9eca; }
+  /* line 165, ../assets/css/main.scss */
+  .results-container .repo-score.green {
+    color: #2ecc71; }
+  /* line 168, ../assets/css/main.scss */
+  .results-container .repo-score.yellow {
+    color: #f39c12; }
+  /* line 171, ../assets/css/main.scss */
+  .results-container .repo-score.red {
+    color: #e74c3c; }
+  /* line 176, ../assets/css/main.scss */
+  .results-container .score-row h2 {
+    margin-bottom: 50px;
+    color: #717171; }
+  /* line 181, ../assets/css/main.scss */
+  .results-container .score-meter {
+    position: relative;
+    width: 340px;
+    height: 170px;
+    background: white;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    -webkit-transform: translateZ(0); }
+    /* line 190, ../assets/css/main.scss */
+    .results-container .score-meter #dial {
+      width: 108px;
+      height: 34px;
+      position: absolute;
+      bottom: -10px;
+      left: 80px;
+      -webkit-transform-origin: 92px 18px;
+      -webkit-transform: rotate(0deg);
+      -webkit-animation-fill-mode: forwards;
+      -webkit-animation-duration: 0.7s;
+      /*
+                  -webkit-animation: dialmove 0.7s;
+                  -moz-animation:    dialmove 0.7s;
+                  -o-animation:      dialmove 0.7s;
+                  animation-fill-mode: forwards;
+                  animation:         dialmove 0.7s;*/ }
+  /* line 210, ../assets/css/main.scss */
+  .results-container .scoreboard-row h2 {
+    margin-bottom: 24px; }
+  /* line 214, ../assets/css/main.scss */
+  .results-container .scoreboard-row table {
+    margin: 0 auto;
+    margin-bottom: 40px;
+    color: #717171;
+    font-size: 21px;
+    line-height: 30px; }
+    /* line 221, ../assets/css/main.scss */
+    .results-container .scoreboard-row table tr {
+      height: 50px; }
+    /* line 224, ../assets/css/main.scss */
+    .results-container .scoreboard-row table .breakdown-score {
+      color: #5e9eca; }
+    /* line 227, ../assets/css/main.scss */
+    .results-container .scoreboard-row table td.breakdown-column {
+      text-align: right;
+      padding-right: 20px; }
+  /* line 233, ../assets/css/main.scss */
+  .results-container .embed-row input {
+    height: 40px;
+    background: #ECECEC;
+    font-family: "BrandonGrotesque-Light", Avenir, Arial, sans-serif;
+    font-size: 20px;
+    color: #717171;
+    line-height: 29px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border: none; }
+    /* line 56, ../assets/css/main.scss */
+    .results-container .embed-row input:focus {
+      border: none;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none; }
+    /* line 65, ../assets/css/main.scss */
+    .results-container .embed-row input::-webkit-input-placeholder {
+      color: #a1a1a1; }
+    /* line 69, ../assets/css/main.scss */
+    .results-container .embed-row input:-moz-placeholder {
+      /* Firefox 18- */
+      color: #a1a1a1; }
+    /* line 73, ../assets/css/main.scss */
+    .results-container .embed-row input::-moz-placeholder {
+      /* Firefox 19+ */
+      color: #a1a1a1; }
+    /* line 77, ../assets/css/main.scss */
+    .results-container .embed-row input:-ms-input-placeholder {
+      color: #a1a1a1; }
+  /* line 237, ../assets/css/main.scss */
+  .results-container .embed-row button {
+    height: 40px;
+    border-radius: 5px;
+    background: #2ecc71;
+    color: white;
+    font-size: 21px;
+    line-height: 30px;
+    font-family: "BrandonGrotesque-Light", Avenir, Arial, sans-serif;
+    font-family: "BrandonGrotesque-Regular", Avenir, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 29px; }
+
+/* line 245, ../assets/css/main.scss */
+hr {
+  height: 2px;
+  background: #ECECEC;
+  margin: 0; }
+  /* line 250, ../assets/css/main.scss */
+  hr.results-hr {
+    position: relative;
+    top: -3px; }
+
+/* line 256, ../assets/css/main.scss */
+.jumbotron {
+  background: white; }
+  /* line 258, ../assets/css/main.scss */
+  .jumbotron h1 {
+    margin-top: 0px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 70px;
+    color: #34495E;
+    line-height: 101px; }
+  /* line 267, ../assets/css/main.scss */
+  .jumbotron p {
+    font-family: "BrandonGrotesque-Light", Avenir, Arial, sans-serif;
+    text-align: center;
+    font-size: 21px;
+    color: #717171;
+    line-height: 30px;
+    margin-bottom: 40px; }
+  /* line 276, ../assets/css/main.scss */
+  .jumbotron input {
+    height: 40px;
+    background: #ECECEC;
+    font-family: "BrandonGrotesque-Light", Avenir, Arial, sans-serif;
+    font-size: 20px;
+    color: #717171;
+    line-height: 29px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border: none; }
+    /* line 56, ../assets/css/main.scss */
+    .jumbotron input:focus {
+      border: none;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none; }
+    /* line 65, ../assets/css/main.scss */
+    .jumbotron input::-webkit-input-placeholder {
+      color: #a1a1a1; }
+    /* line 69, ../assets/css/main.scss */
+    .jumbotron input:-moz-placeholder {
+      /* Firefox 18- */
+      color: #a1a1a1; }
+    /* line 73, ../assets/css/main.scss */
+    .jumbotron input::-moz-placeholder {
+      /* Firefox 19+ */
+      color: #a1a1a1; }
+    /* line 77, ../assets/css/main.scss */
+    .jumbotron input:-ms-input-placeholder {
+      color: #a1a1a1; }
+  /* line 280, ../assets/css/main.scss */
+  .jumbotron button#find-score {
+    height: 40px;
+    border-radius: 5px;
+    background: #2ecc71;
+    color: white;
+    font-size: 21px;
+    line-height: 30px;
+    font-family: "BrandonGrotesque-Light", Avenir, Arial, sans-serif;
+    position: absolute;
+    top: 0;
+    right: 0; }
+    /* line 286, ../assets/css/main.scss */
+    .jumbotron button#find-score .spinner {
+      display: none;
+      position: absolute;
+      top: 9px;
+      left: 4px;
+      width: 50px;
+      height: 30px;
+      text-align: center;
+      font-size: 10px; }
+    /* line 297, ../assets/css/main.scss */
+    .jumbotron button#find-score .spinner > div {
+      background-color: white;
+      height: 80%;
+      width: 6px;
+      display: inline-block;
+      -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+      animation: stretchdelay 1.2s infinite ease-in-out; }
+    /* line 306, ../assets/css/main.scss */
+    .jumbotron button#find-score .spinner .rect2 {
+      -webkit-animation-delay: -1.1s;
+      animation-delay: -1.1s; }
+    /* line 311, ../assets/css/main.scss */
+    .jumbotron button#find-score .spinner .rect3 {
+      -webkit-animation-delay: -1.0s;
+      animation-delay: -1.0s; }
+    /* line 317, ../assets/css/main.scss */
+    .jumbotron button#find-score[disabled] {
+      opacity: 1.0; }
+    /* line 322, ../assets/css/main.scss */
+    .jumbotron button#find-score.loading .spinner {
+      display: inline; }
+    /* line 325, ../assets/css/main.scss */
+    .jumbotron button#find-score.loading span {
+      visibility: hidden; }
+  /* line 332, ../assets/css/main.scss */
+  .jumbotron .input-col {
+    position: relative; }
+
+/* line 337, ../assets/css/main.scss */
+.faq-container {
+  padding-bottom: 20px; }
+  /* line 340, ../assets/css/main.scss */
+  .faq-container .answer {
+    font-family: "BrandonGrotesque-Light", Avenir, Arial, sans-serif; }
+
+/* line 345, ../assets/css/main.scss */
+#error-container {
+  margin-top: 20px; }
