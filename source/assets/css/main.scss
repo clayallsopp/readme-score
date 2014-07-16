@@ -1,3 +1,7 @@
+@import "compass/css3/animation";
+@import "compass/css3/transform";
+@import "compass/css3/box-shadow";
+
 /**
  * @license
  * MyFonts Webfont Build ID 2843878, 2014-07-10T18:39:34-0400
@@ -41,6 +45,14 @@
     font-family: "BrandonGrotesque-Regular", Avenir, Arial, sans-serif;
 }
 
+@mixin input-placeholder {
+    &.placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; }
+}
+
 @mixin input-style {
     height: 40px;
     background: #ECECEC;
@@ -48,34 +60,18 @@
     font-size: 20px;
     color: $grey1;
     line-height: 29px;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
+    @include box-shadow(none);
     border: none;
 
     &:focus {
         border: none;
-        -webkit-box-shadow: none;
-        -moz-box-shadow: none;
-        box-shadow: none;
+        @include box-shadow(none);
     }
 
     $placeholder-color: #a1a1a1;
 
-    &::-webkit-input-placeholder {
-       color: $placeholder-color;
-    }
-
-    &:-moz-placeholder { /* Firefox 18- */
-       color: $placeholder-color;
-    }
-
-    &::-moz-placeholder {  /* Firefox 19+ */
-       color: $placeholder-color;
-    }
-
-    &:-ms-input-placeholder {
-       color: $placeholder-color;
+    @include input-placeholder {
+        color: $placeholder-color;
     }
 }
 
@@ -105,45 +101,40 @@ $dark-blue: #34495E;
 
 $grey1: #717171;
 
-@-webkit-keyframes dialmove {
+@include keyframes(dialmove) {
   0% {
-    animation-timing-function: ease-in;
-    -webkit-transform: rotate(0deg);
+
+    @include animation-timing-function(ease-in);
+    @include rotate(0deg);
   }
   50% {
-    animation-timing-function: linear;
-    -webkit-transform: rotate(164deg + 10deg);
+    @include animation-timing-function(linear);
+    @include rotate(164deg + 10deg);
   }
   70% {
-    animation-timing-function: linear;
-    -webkit-transform: rotate(164deg - 10deg);
+    @include animation-timing-function(linear);
+    @include rotate(164deg - 10deg);
   }
   85% {
-    animation-timing-function: linear;
-    -webkit-transform: rotate(164deg + 5deg);
+    @include animation-timing-function(linear);
+    @include rotate(164deg + 5deg);
   }
   95% {
-    animation-timing-function: linear;
-    -webkit-transform: rotate(164deg - 3deg);
+    @include animation-timing-function(linear);
+    @include rotate(164deg - 3deg);
   }
   100% {
-    animation-timing-function: ease-out;
-    -webkit-transform: rotate(164deg);
+    @include animation-timing-function(ease-out);
+    @include rotate(164deg);
   }
 }
 
-@-webkit-keyframes stretchdelay {
-  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
-  20% { -webkit-transform: scaleY(1.0) }
-}
 
-@keyframes stretchdelay {
-  0%, 40%, 100% { 
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
-  }  20% { 
-    transform: scaleY(1.0);
-    -webkit-transform: scaleY(1.0);
+@include keyframes(stretchdelay) {
+  0%, 40%, 100% {
+    @include scaleY(0.4);
+  }  20% {
+    @include scaleY(1.4);
   }
 }
 
@@ -186,7 +177,7 @@ $grey1: #717171;
         background: white;
         margin: 0 auto;
         margin-bottom: 30px;
-        -webkit-transform: translateZ(0);
+        @include translateZ(0);
 
         #dial {
             width: 108px;
@@ -194,17 +185,10 @@ $grey1: #717171;
             position: absolute;
             bottom: -10px;
             left: 80px;
-            -webkit-transform-origin: 92px 18px;
-            -webkit-transform: rotate(0deg);
-            -webkit-animation-fill-mode: forwards;
-            -webkit-animation-duration: 0.7s;
-
-/*
-            -webkit-animation: dialmove 0.7s;
-            -moz-animation:    dialmove 0.7s;
-            -o-animation:      dialmove 0.7s;
-            animation-fill-mode: forwards;
-            animation:         dialmove 0.7s;*/
+            @include transform-origin(92px, 18px);
+            @include rotate(0deg);
+            @include animation-fill-mode(forwards);
+            @include animation-duration(0.7s);
         }
     }
 
@@ -300,18 +284,15 @@ hr {
           height: 80%;
           width: 6px;
           display: inline-block;
-          -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
-          animation: stretchdelay 1.2s infinite ease-in-out;
+          @include animation(stretchdelay 1.2s infinite ease-in-out);
         }
 
         .spinner .rect2 {
-          -webkit-animation-delay: -1.1s;
-          animation-delay: -1.1s;
+          @include animation-delay(-1.1s);
         }
 
         .spinner .rect3 {
-          -webkit-animation-delay: -1.0s;
-          animation-delay: -1.0s;
+          @include animation-delay(-1.0s);
         }
 
 
