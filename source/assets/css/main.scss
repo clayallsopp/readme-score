@@ -73,6 +73,10 @@
     @include input-placeholder {
         color: $placeholder-color;
     }
+
+    @media (max-width: $screen-xs-max) {
+        font-size: 15px;
+    }
 }
 
 @mixin button-style {
@@ -85,7 +89,7 @@
     @include light;
 }
 
-@mixin image-2x($image, $width, $height) {
+@mixin image-2x($image, $width, $height: "") {
   @media (min--moz-device-pixel-ratio: 1.3),
          (-o-min-device-pixel-ratio: 2.6/2),
          (-webkit-min-device-pixel-ratio: 1.3),
@@ -93,7 +97,7 @@
          (min-resolution: 1.3dppx) {
     /* on retina, use image that's scaled by 2 */
     background-image: url($image);
-    background-size: $width $height;
+    background-size: $width unquote($height);
   }
 }
 
@@ -112,6 +116,8 @@ $blue: #5E9ECA;
 $dark-blue: #34495E;
 
 $grey1: #717171;
+
+$screen-xs-max: 768px;
 
 @include keyframes(dialmove) {
   0% {
@@ -159,6 +165,11 @@ $grey1: #717171;
         @include light;
         font-size: 40px;
         line-height: 57px;
+
+        @media (max-width: $screen-xs-max) {
+            font-size: 35px;
+            line-height: 46px;
+        }
     }
 
     .repo-name {
@@ -180,17 +191,20 @@ $grey1: #717171;
     .score-row h2 {
         margin-bottom: 50px;
         color: $grey1;
+        overflow: hidden;
     }
 
     .score-meter {
         position: relative;
-        width: 340px;
+        max-width: 340px;
         height: 170px;
         background: white;
         margin: 0 auto;
         margin-bottom: 30px;
         background: url(../images/panels.png);
-        @include image-2x("../images/panels@2x.png", 340px, 170px);
+        @include image-2x("../images/panels@2x.png", 100%);
+        background-repeat: no-repeat;
+        background-position: bottom;
 
         #dial {
             background: url(../images/dial.png);
@@ -204,6 +218,13 @@ $grey1: #717171;
             @include rotate(0deg);
             @include animation-fill-mode(forwards);
             @include animation-duration(0.7s);
+
+            @media (max-width: 340px) {
+                position: relative;
+                margin: 0 auto;
+                top: 158px;
+                left: -36px;
+            }
         }
     }
 
@@ -228,6 +249,11 @@ $grey1: #717171;
             text-align: right;
             padding-right: 20px;
         }
+
+        @media (max-width: $screen-xs-max) {
+            font-size: 15px;
+            line-height: 17px;
+        }
     }
 
     .embed-row input {
@@ -239,6 +265,11 @@ $grey1: #717171;
         @include regular;
         font-size: 20px;
         line-height: 26px;
+        @media (max-width: $screen-xs-max) {
+            position: absolute;
+            top: 0;
+            right: 10px;
+        }
     }
 }
 
@@ -255,6 +286,7 @@ hr {
 
 .jumbotron {
     background: white;
+
     h1 {
         margin-top: 0px;
         margin-bottom: 5px;
@@ -262,6 +294,10 @@ hr {
         font-size: 70px;
         color: $dark-blue;
         line-height: 101px;
+        @media (max-width: $screen-xs-max) {
+            font-size: 50px;
+            line-height: 80px;
+        }
     }
 
     p {
@@ -276,16 +312,25 @@ hr {
     input {
         @include input-style;
     }
+    .find-score-col {
+        margin-top: 10px;
+
+        @media (min-width: $screen-xs-max + 1px) {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin-top: 0px;
+        }
+    }
 
     button#find-score {
         @include button-style;
-        position: absolute;
-        top: 0;
-        right: 0;
+        width: 100%;
+        position: relative;
 
         .spinner {
           display: none;
-          position: absolute;
+          margin: 0 auto;
           top: 9px;
           left: 4px;
           width: 50px;
@@ -293,6 +338,23 @@ hr {
           text-align: center;
           font-size: 10px;
         }
+
+        @media (max-width: $screen-xs-max) {
+            span {
+                position: absolute;
+                width: 100%;
+                left: 0;
+                top: 6px;
+            }
+        }
+
+        @media (min-width: $screen-xs-max + 1px) {
+            width: inherit;
+            .spinner {
+                position: absolute;
+            }
+        }
+
 
         .spinner > div {
           background-color: white;
@@ -336,6 +398,11 @@ hr {
     font-size: 18px;
     line-height: 30px;
     color: $grey1;
+
+    @media (max-width: $screen-xs-max) {
+        font-size: 14px;
+        line-height: 23px;
+    }
 
     h3 {
         color: $dark-blue;
