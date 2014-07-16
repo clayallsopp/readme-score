@@ -1,53 +1,52 @@
 
 
 var Dial = function() {
-  function findKeyframesRule(animationName) {
-    var ss = document.styleSheets;
-    var rule = null;
-    for (var i = 0; i < ss.length; i++) {
-      for (var j = 0; j < ss[i].cssRules.length; j++) {
-        if (ss[i].cssRules[j].type == window.CSSRule.WEBKIT_KEYFRAMES_RULE && ss[i].cssRules[j].name == animationName) {
-          rule = ss[i].cssRules[j];
-        }
-      }
-    }
-    return rule;
-  }
-
-  var lastDegrees = 164;
-
-  function createRotationAnimation(degrees) {
-    var keyframes = findKeyframesRule("dialmove");
-    var diffFromOriginal = lastDegrees - degrees;
-    var ruleTexts = [];
-    for (var i = keyframes.cssRules.length - 1; i >= 0; i--) {
-      var rule = keyframes.cssRules[i];
-      ruleTexts.push("" + rule.cssText);
-      keyframes.deleteRule(rule.keyText);
-    }
-    for (var i = ruleTexts.length - 1; i >= 0 ; i--) {
-      var cssText = ruleTexts[i];
-      var matches = cssText.match("(\\d+)deg");
-      var ruleDegrees = parseInt(matches[1]);
-      var ruleDiffFromOriginal = lastDegrees - ruleDegrees;
-      var newRuleDegrees = degrees + ruleDiffFromOriginal;
-      if (ruleDegrees === 0) {
-        newRuleDegrees = 0;
-      }
-      var replaced = cssText.replace(matches[0], newRuleDegrees + "deg");
-      keyframes.insertRule(replaced);
-    }
-    return keyframes;
-  }
 
   function rotateDial(degrees) {
     degrees = parseInt(degrees);
-    var animation = createRotationAnimation(degrees);
+
+    var timingOption = function(timing) {
+      return {
+        '-webkit-animation-timing-function': timing,
+        '-moz-animation-timing-function': timing,
+        'animation-timing-function': timing
+      }
+    };
+
+    var transformOption = function(transform) {
+      return {
+        '-moz-transform': transform,
+        '-ms-transform': transform,
+        '-webkit-transform': transform,
+        'transform': transform
+      }
+    };
+
+    var keyframeOption = function(timing, transform) {
+      var option = {};
+      $.extend(option, timingOption(timing), transformOption(transform));
+      return option;
+    }
+
+    var keyframeName = 'dialmove-' + degrees;
+    $.keyframe.define([{
+        name: keyframeName,
+        '0%': keyframeOption('ease-in', 'rotate(0deg)'),
+        '50%': keyframeOption('linear', 'rotate(' + (degrees + 10) + 'deg)'),
+        '70%': keyframeOption('linear', 'rotate(' + (degrees - 10) + 'deg)'),
+        '85%': keyframeOption('linear', 'rotate(' + (degrees + 5) + 'deg)'),
+        '95%': keyframeOption('linear', 'rotate(' + (degrees - 3) + 'deg)'),
+        '100%': keyframeOption('ease-out', 'rotate(' + (degrees + 0) + 'deg)'),
+    }]);
+
     document.getElementById('dial').style.webkitAnimationName = undefined;
+
     setTimeout(function() {
-      document.getElementById('dial').style.webkitAnimationName = "dialmove";
+      $("#dial").playKeyframe({
+        name: keyframeName,
+        duration: 700
+      });
     }, 100);
-    lastDegrees = degrees;
   }
 
   this.rotateToScore = function(score) {
