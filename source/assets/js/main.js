@@ -2,7 +2,7 @@
 
 var Dial = function() {
 
-  function rotateDial(degrees) {
+  var rotateDial = function(degrees) {
     degrees = parseInt(degrees);
 
     var timingOption = function(timing) {
@@ -39,7 +39,7 @@ var Dial = function() {
         '100%': keyframeOption('ease-out', 'rotate(' + (degrees + 0) + 'deg)'),
     }]);
 
-    document.getElementById('dial').style.webkitAnimationName = undefined;
+    this.hide();
 
     setTimeout(function() {
       $("#dial").playKeyframe({
@@ -47,7 +47,7 @@ var Dial = function() {
         duration: 700
       });
     }, 100);
-  }
+  }.bind(this);
 
   this.rotateToScore = function(score) {
     // account for white gaps
@@ -59,6 +59,10 @@ var Dial = function() {
     }
     var degrees = (score / 100.0) * 180.0;
     rotateDial(degrees);
+  }
+
+  this.hide = function() {
+    document.getElementById('dial').style.webkitAnimationName = undefined;
   }
 
   return this;
@@ -144,6 +148,8 @@ var Result = function() {
   };
 
   this.show = function(score) {
+    dial.hide();
+
     $(".results-container").show();
     $(".repo-name").text(score.url);
     $(".repo-score").text(score.score);
