@@ -101,6 +101,7 @@ $green:  #2ECC71;
 $yellow: #F39C12;
 $red: #E74C3C;
 $blue: #5E9ECA;
+$dark-blue: #34495E;
 
 $grey1: #717171;
 
@@ -260,7 +261,7 @@ hr {
         margin-bottom: 5px;
         text-align: center;
         font-size: 70px;
-        color: #34495E;
+        color: $dark-blue;
         line-height: 101px;
     }
 
@@ -336,6 +337,13 @@ hr {
 
 .faq-container {
     padding-bottom: 20px;
+    font-size: 18px;
+    line-height: 30px;
+    color: $grey1;
+
+    h3 {
+        color: $dark-blue;
+    }
 
     .answer {
         @include light;
