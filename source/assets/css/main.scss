@@ -81,7 +81,7 @@
     background: $green;
     color: white;
     font-size: 21px;
-    line-height: 30px;
+    line-height: 28px;
     @include light;
 }
 
@@ -223,7 +223,7 @@ $grey1: #717171;
         @include button-style;
         @include regular;
         font-size: 20px;
-        line-height: 29px;
+        line-height: 26px;
     }
 }
 
