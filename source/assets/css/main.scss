@@ -189,6 +189,8 @@ $grey1: #717171;
         background: white;
         margin: 0 auto;
         margin-bottom: 30px;
+        background: url(../images/panels.png);
+        @include image-2x("../images/panels@2x.png", 340px, 170px);
 
         #dial {
             background: url(../images/dial.png);
