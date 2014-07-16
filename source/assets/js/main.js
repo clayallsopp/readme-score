@@ -22,7 +22,7 @@ var Dial = function() {
     var ruleTexts = [];
     for (var i = keyframes.cssRules.length - 1; i >= 0; i--) {
       var rule = keyframes.cssRules[i];
-      ruleTexts.push(rule.cssText);
+      ruleTexts.push("" + rule.cssText);
       keyframes.deleteRule(rule.keyText);
     }
     for (var i = ruleTexts.length - 1; i >= 0 ; i--) {
@@ -41,6 +41,7 @@ var Dial = function() {
   }
 
   function rotateDial(degrees) {
+    degrees = parseInt(degrees);
     var animation = createRotationAnimation(degrees);
     document.getElementById('dial').style.webkitAnimationName = undefined;
     setTimeout(function() {
@@ -76,7 +77,7 @@ var ScoreAPI = {
   find: function(urlOrSlug, callback, errorCallback) {
     var url = "http://readme-score-api.herokuapp.com/score";
     $.get(url, {url: urlOrSlug, human_breakdown: "true"}, function(data, textStatus) {
-        if (textStatus === 'error' || textStatus === 'timeout') {
+        if (textStatus === 'error' || textStatus === 'timeout' || data.error) {
           errorCallback();
         }
         else {
@@ -111,10 +112,8 @@ var Result = function() {
     var breakdowns = [];
     for (var description in breakdown) {
       var scorePossibleTuple = breakdown[description];
-      var score = scorePossibleTuple[0];
-      score = scorePossibleTuple;
+      var score = parseInt(scorePossibleTuple[0]);
       var possible = scorePossibleTuple[1];
-      possible = 40;
       breakdowns.push({description: description, score: score, possible: possible});
     };
     breakdowns.sort(function(a, b) {
@@ -135,17 +134,31 @@ var Result = function() {
               '<td>' + description + '</td>' +
             '</tr>'
     breakdownTable().append(el);
-  }
+  };
+
+  var articleForScore = function(score) {
+    var scoreString = "" + score;
+    if (scoreString[0] == "8") {
+      return "an";
+    }
+    return "a";
+  };
 
   this.show = function(score) {
     $(".results-container").show();
     $(".repo-name").text(score.url);
     $(".repo-score").text(score.score);
+    $(".repo-score-article").text(articleForScore(score.score));
     $(".repo-score").removeClass("red green yellow").addClass(scoreToColor[score.score]);
     setBreakdown(score.breakdown);
 
-    dial.rotateToScore(score.score);
+    setTimeout(function() {
+      dial.rotateToScore(score.score);
+    }, 1000);
+  }
 
+  this.hide = function() {
+    $(".results-container").hide();
   }
 }
 
@@ -153,11 +166,26 @@ $(function() {
     var result = new Result();
 
     $("#find-score").click(function() {
-      ScoreAPI.find($("#score-url").val(), function(score) {
+      var $button = $(this);
+      $("#error-container").hide();
+      $button.addClass("loading");
+      $button.attr('disabled', 'disabled');
+      result.hide();
+
+      var urlOrSlug = $("#score-url").val();
+      if (!urlOrSlug) {
+        urlOrSlug = "afnetworking/afnetworking";
+      }
+      ScoreAPI.find(urlOrSlug, function(score) {
         window.score = score;
         result.show(score);
+        $button.removeClass("loading");
+        $button.removeAttr('disabled');
       }, function() {
         // an error happened :(
+        $button.removeClass("loading");
+        $button.removeAttr('disabled');
+        $("#error-container").show();
       })
     });
 });

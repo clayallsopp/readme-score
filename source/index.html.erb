@@ -16,28 +16,37 @@
     <div class="jumbotron">
       <div class="container">
         <h1>ScoreMe</h1>
-        <p>Check out the complexity for a Github repo:</p>
+        <p>Get the README complexity score for a Github repo:</p>
         <div class="row">
           <div class="col-md-4 col-md-offset-4 input-col">
             <input id="score-url" type="text" class="form-control" placeholder="afnetworking/afnetworking" />
-            <button id="find-score" class="btn" type="button">Go!</button>
+            <button id="find-score" class="btn" type="button">
+              <span>Go!</span>
+              <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+              </div>
+            </button>
           </div><!-- /.col-md-6 -->
         </div><!-- /.row -->
 
-        <br />
-
         <div class="row">
-          <div class="col-md-6">
-            <div class="alert alert-success" role="alert" id="score-container" style="display: none;">Has a score of <strong id="score"></strong></div>
+          <div class="col-md-6 col-md-offset-3">
+            <div class="alert alert-warning" role="alert" id="error-container" style="display: none;">
+              There was a problem and the score couldn't be calculated =\
+            </div>
           </div>
         </div><!-- /.row -->
       </div>
     </div>
 
+    <hr />
+
     <div class="container results-container">
       <div class="row score-row">
         <div class="col-md-12">
-          <h2><span class="repo-name">clayallsopp/formotion</span> scored an <span class="repo-score green">82</span></h2>
+          <h2><span class="repo-name">clayallsopp/formotion</span> scored <span class="repo-score-article">an</span> <span class="repo-score green">82</span></h2>
         </div>
       </div>
 
@@ -66,7 +75,7 @@
 
       <div class="row embed-row">
         <div class="col-md-12">
-          <h2>Embed in your README:</h2>
+          <h2>Embed</h2>
         </div>
         <div class="col-md-5 col-md-offset-3">
           <input id="image-url" disabled type="text" class="form-control" value="asdasd" />
@@ -77,22 +86,24 @@
       </div>
     </div>
 
-    <div class="container">
+    <hr class="results-hr" />
+
+    <div class="container faq-container">
       <div class="row">
         <div class="col-md-12">
           <h3>What is this?</h3>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 answer">
           <p>
-            ScoreMe gives you a <mark>numerical score from 0 to 100</mark> for your Github-style README. The intention is to measure <em>complexity</em>, which is a generally correlated with <em>quality</em>.
+            ScoreMe gives you a numerical score from 0 to 100 for your Github-style README. The intention is to measure complexity, which is a generally correlated with quality.
           </p>
 
           <p>
-            It isn't meant to measure if one README is absolutely better than another, but it will give you a good idea if the README is high-quality, needs more work, or somewhere inbetween.
+            It won't measure if one README is absolutely better than another, but it will give you a good idea if the README is high-quality, needs more work, or somewhere inbetween.
           </p>
 
           <p>
-            You can <mark>use this website, <a href="#api">the API</a>, or the <a href="http://github.com/clayallsopp/readme-score">Ruby library</a></mark> to find scores.
+            You can use this website, <a href="#api">the HTTP API</a>, or the <a href="http://github.com/clayallsopp/readme-score">Ruby library</a> to calculate scores.
           </p>
         </div>
       </div>
@@ -101,12 +112,27 @@
         <div class="col-md-12">
           <h3>What are some use cases for ScoreMe?</h3>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 answer">
           <ul>
             <li>(Part of) a repository quality calculation</li>
-            <li>Open-source-related research</li>
+            <li>Open-source related research</li>
             <li>Sanity-check for a README you're working with</li>
           </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <h3>My score doesn't seem correct?</h3>
+        </div>
+        <div class="col-md-12 answer">
+          <p>
+            Some projects like <a href="http://github.com/rails/rails">rails/rails</a> have most of their documentation outside of the README. In those cases, the score doesn't mean a whole lot if you're using it alone to interpret quality.
+          </p>
+
+          <p>
+            If you feel like the calculation should be tweaked, then definitely <a href="https://github.com/clayallsopp/readme-score/issues">open an issue</a> with your expected and actual results.
+          </p>
         </div>
       </div>
     </div>
