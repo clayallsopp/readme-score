@@ -1,7 +1,7 @@
 module ReadmeScore
   class Document
     class Filter
-      SERVICES = ["travis-ci.org", "codeclimate.com", "gemnasium.com", "cocoadocs.org"]
+      SERVICES = ["travis-ci.org", "codeclimate.com", "gemnasium.com", "cocoadocs.org", "readme-score-api.herokuapp.com"]
 
       def initialize(noko_or_html)
         @noko = Util.to_noko(noko_or_html, true)
