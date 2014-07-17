@@ -23,15 +23,15 @@
  * © 2014 MyFonts Inc
 */
 /* @import must be at top of file, otherwise CSS will not work */
-@import url("//hello.myfonts.net/count/2b64eF");
+@import url("//hello.myfonts.net/count/2b7454");
 @font-face {
   font-family: 'BrandonGrotesque-Regular';
-  src: url("../fonts/2B64EF_0_0.eot");
-  src: url("../fonts/2B64EF_0_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B64EF_0_0.woff") format("woff"), url("../fonts/2B64EF_0_0.ttf") format("truetype"); }
+  src: url("../fonts/2B7454_0_0.eot");
+  src: url("../fonts/2B7454_0_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B7454_0_0.woff") format("woff"), url("../fonts/2B7454_0_0.ttf") format("truetype"); }
 @font-face {
   font-family: 'BrandonGrotesque-Light';
-  src: url("../fonts/2B64EF_1_0.eot");
-  src: url("../fonts/2B64EF_1_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B64EF_1_0.woff") format("woff"), url("../fonts/2B64EF_1_0.ttf") format("truetype"); }
+  src: url("../fonts/2B7454_1_0.eot");
+  src: url("../fonts/2B7454_1_0.eot?#iefix") format("embedded-opentype"), url("../fonts/2B7454_1_0.woff") format("woff"), url("../fonts/2B7454_1_0.ttf") format("truetype"); }
 /* line 104, ../assets/css/main.scss */
 body {
   font-size: 15px;
