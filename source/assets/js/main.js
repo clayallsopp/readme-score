@@ -233,9 +233,9 @@ var QueryString = function () {
 
 $(function() {
   var result = new Result();
+  var $button = $("#find-score");
 
-  $("#find-score").click(function() {
-    var $button = $(this);
+  var performSearch = function() {
     $("#error-container").hide();
     $button.addClass("loading");
     $button.attr('disabled', 'disabled');
@@ -256,7 +256,15 @@ $(function() {
       $button.removeAttr('disabled');
       $("#error-container").show();
     })
+  };
+
+  $('#score-url').keyup(function (e) {
+    if (e.keyCode === 13)) {
+      performSearch();
+    }
   });
+
+  $("#find-score").click(performSearch);
 
   if (QueryString.url) {
     $("#score-url").val(QueryString.url);
