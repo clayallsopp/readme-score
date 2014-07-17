@@ -1,7 +1,7 @@
 # ReadmeScore
 
 [![Build Status](https://travis-ci.org/clayallsopp/readme-score.svg)](https://travis-ci.org/clayallsopp/readme-score)
-[![Readme Score](http://readme-score-api.herokuapp.com/score.svg?url=clayallsopp/readme-score&bust=1)](http://clayallsopp.github.io/readme-score?url=clayallsopp/readme-score)
+[![Readme Score](http://readme-score-api.herokuapp.com/score.svg?url=clayallsopp/readme-score)](http://clayallsopp.github.io/readme-score?url=clayallsopp/readme-score)
 
 Gives a complexity score for a README.
 
@@ -11,20 +11,20 @@ Example score:
 
 | Repo                                                          | Score |
 |---------------------------------------------------------------|-------|
-| https://github.com/RolandasRazma/RRFPSBar                     | 16    |
-| https://github.com/JRG-Developer/MediaRSSParser               | 35    |
-| https://github.com/ruslanskorb/RSDayFlow                      | 35    |
-| https://github.com/samnung/AFHTTPFileUpdateOperation          | 31    |
-| https://github.com/schneiderandre/ASCFlatUIColor              | 65    |
-| https://github.com/daltoniam/BootstrapUIKit                   | 60    |
-| https://github.com/AFNetworking/AFNetworking                  | 95    |
-| https://github.com/tomersh/AppleGuice                         | 85    |
-| https://github.com/kevindelord/DKHelper                       | 25    |
-| https://github.com/saturngod/IAPHelper                        | 75    |
-| https://github.com/alskipp/ASValueTrackingSlider              | 87    |
-| https://github.com/phranck/CNTreeNode                         | 25    |
-| https://github.com/dasdom/DDHDynamicViewControllerTransitions | 91    |
-| https://github.com/RestKit/RestKit                            | 100   |
+| https://github.com/RolandasRazma/RRFPSBar                     | [![Readme Score](http://readme-score-api.herokuapp.com/score.svg?url=RolandasRazma/RRFPSBar)](http://clayallsopp.github.io/readme-score?url=RolandasRazma/RRFPSBar)    |
+| https://github.com/JRG-Developer/MediaRSSParser               | [![Readme Score](http://readme-score-api.herokuapp.com/score.svg?url=JRG-Developer/MediaRSSParser)](http://clayallsopp.github.io/readme-score?url=JRG-Developer/MediaRSSParser)    |
+| https://github.com/ruslanskorb/RSDayFlow                      | [![Readme Score](http://readme-score-api.herokuapp.com/score.svg?url=ruslanskorb/RSDayFlow)](http://clayallsopp.github.io/readme-score?url=ruslanskorb/RSDayFlow)    |
+| https://github.com/samnung/AFHTTPFileUpdateOperation          | [![Readme Score](http://readme-score-api.herokuapp.com/score.svg?url=samnung/AFHTTPFileUpdateOperation)](http://clayallsopp.github.io/readme-score?url=samnung/AFHTTPFileUpdateOperation)    |
+| https://github.com/schneiderandre/ASCFlatUIColor              | [![Readme Score](http://readme-score-api.herokuapp.com/score.svg?url=schneiderandre/ASCFlatUIColor)](http://clayallsopp.github.io/readme-score?url=schneiderandre/ASCFlatUIColor)    |
+| https://github.com/daltoniam/BootstrapUIKit                   | [![Readme Score](http://readme-score-api.herokuapp.com/score.svg?url=daltoniam/BootstrapUIKit)](http://clayallsopp.github.io/readme-score?url=daltoniam/BootstrapUIKit)    |
+| https://github.com/AFNetworking/AFNetworking                  | [![Readme Score](http://readme-score-api.herokuapp.com/score.svg?url=AFNetworking/AFNetworking)](http://clayallsopp.github.io/readme-score?url=AFNetworking/AFNetworking)    |
+| https://github.com/tomersh/AppleGuice                         | [![Readme Score](http://readme-score-api.herokuapp.com/score.svg?url=tomersh/AppleGuice)](http://clayallsopp.github.io/readme-score?url=tomersh/AppleGuice)    |
+| https://github.com/kevindelord/DKHelper                       | [![Readme Score](http://readme-score-api.herokuapp.com/score.svg?url=kevindelord/DKHelper)](http://clayallsopp.github.io/readme-score?url=kevindelord/DKHelper)    |
+| https://github.com/saturngod/IAPHelper                        | [![Readme Score](http://readme-score-api.herokuapp.com/score.svg?url=saturngod/IAPHelper)](http://clayallsopp.github.io/readme-score?url=saturngod/IAPHelper)    |
+| https://github.com/alskipp/ASValueTrackingSlider              | [![Readme Score](http://readme-score-api.herokuapp.com/score.svg?url=alskipp/ASValueTrackingSlider)](http://clayallsopp.github.io/readme-score?url=alskipp/ASValueTrackingSlider)    |
+| https://github.com/phranck/CNTreeNode                         | [![Readme Score](http://readme-score-api.herokuapp.com/score.svg?url=phranck/CNTreeNode)](http://clayallsopp.github.io/readme-score?url=phranck/CNTreeNode)    |
+| https://github.com/dasdom/DDHDynamicViewControllerTransitions | [![Readme Score](http://readme-score-api.herokuapp.com/score.svg?url=dasdom/DDHDynamicViewControllerTransitions)](http://clayallsopp.github.io/readme-score?url=dasdom/DDHDynamicViewControllerTransitions)    |
+| https://github.com/RestKit/RestKit                            | [![Readme Score](http://readme-score-api.herokuapp.com/score.svg?url=RestKit/RestKit)](http://clayallsopp.github.io/readme-score?url=RestKit/RestKit)   |
 
 
 ## Installation
