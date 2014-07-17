@@ -81,11 +81,14 @@
         <div class="col-md-12">
           <h2>Embed</h2>
         </div>
+        <div class="col-md-12">
+          <a id="badge-link" href="#"><img id="badge-image" /></a>
+        </div>
         <div class="col-xs-12 col-sm-6 col-sm-offset-2 col-md-5 col-md-offset-3 input-col">
           <input id="image-url" disabled type="text" class="form-control" value="asdasd" />
         </div>
         <div class="col-sm-2 col-md-2 find-score-col">
-          <button id="copy-image-url" class="btn" type="button">Copy!</button>
+          <button id="copy-image-url" data-clipboard-text="Copy Me!" class="btn" type="button">Copy!</button>
         </div>
 
       </div>
@@ -146,6 +149,10 @@
       <script>window.jQuery || document.write('<script src="javascripts/vendor/jquery-1.11.0.min.js"><\/script>')</script>
 
       <script src="assets/js/jquery.keyframes.min.js"></script>
+      <script src="assets/js/ZeroClipboard.min.js"></script>
+      <script type="text/javascript">
+      ZeroClipboard.config( { swfPath: "assets/js/ZeroClipboard.swf" } );
+      </script>
       <script src="assets/js/main.js"></script>
     </body>
 </html>

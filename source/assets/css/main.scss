@@ -271,6 +271,13 @@ $screen-xs-max: 768px;
             right: 10px;
         }
     }
+
+    #badge-image {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        width: 145px;
+    }
 }
 
 hr {

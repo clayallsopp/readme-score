@@ -90,6 +90,43 @@ var ScoreAPI = {
   }
 };
 
+var Embed = function() {
+  var $copyButton = $("#copy-image-url");
+  var $copyField = $("#image-url");
+  var $badge = $("#badge-image");
+  var $badgeLink = $("#badge-link");
+
+  var clipboard = new ZeroClipboard($copyButton[0]);
+  clipboard.on("ready", function(readyEvent) {
+    clipboard.on("aftercopy", function(ev) {
+      $copyButton.text("Copied!");
+    });
+  });
+  clipboard.on('error', function(ev) {
+    console.log('ZeroClipboard error of type "' + ev.name + '": ' + ev.message);
+  });
+
+  this.prepare = function() {
+    $copyButton.text("Copy!");
+  };
+  this.prepare.bind(this);
+
+  this.update = function(scoreUrl) {
+    var svgUrl = "http://readme-score-api.herokuapp.com/score.svg?url=" + scoreUrl;
+    var linkUrl = "http://clayallsopp.github.io/readme-score?url=" + scoreUrl;
+
+    var markdown = '[![Readme Score](' + svgUrl + ')](' + linkUrl + ')';
+
+    $copyField.val(markdown);
+    clipboard.setText(markdown);
+    $badge.attr('src', svgUrl);
+    $badgeLink.attr('href', linkUrl);
+  };
+  this.update.bind(this);
+
+  return this;
+}
+
 var Result = function() {
   var scoreToColor = {};
   for (var i = 0; i <= 100; i++) {
@@ -105,6 +142,7 @@ var Result = function() {
   };
 
   var dial = new Dial();
+  var embed = new Embed();
 
   var breakdownTable = function() {
     return $(".scoreboard-row table tbody");
@@ -149,6 +187,7 @@ var Result = function() {
 
   this.show = function(score) {
     dial.hide();
+    embed.prepare();
 
     $(".results-container").show();
     $(".repo-name").text(score.url);
@@ -156,6 +195,7 @@ var Result = function() {
     $(".repo-score-article").text(articleForScore(score.score));
     $(".repo-score").removeClass("red green yellow").addClass(scoreToColor[score.score]);
     setBreakdown(score.breakdown);
+    embed.update(score.url);
 
     setTimeout(function() {
       dial.rotateToScore(score.score);
@@ -167,30 +207,59 @@ var Result = function() {
   }
 }
 
+
+var QueryString = function () {
+  // This function is anonymous, is executed immediately and 
+  // the return value is assigned to QueryString!
+  var query_string = {};
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for (var i=0;i<vars.length;i++) {
+    var pair = vars[i].split("=");
+      // If first entry with this name
+    if (typeof query_string[pair[0]] === "undefined") {
+      query_string[pair[0]] = pair[1];
+      // If second entry with this name
+    } else if (typeof query_string[pair[0]] === "string") {
+      var arr = [ query_string[pair[0]], pair[1] ];
+      query_string[pair[0]] = arr;
+      // If third or later entry with this name
+    } else {
+      query_string[pair[0]].push(pair[1]);
+    }
+  } 
+    return query_string;
+} ();
+
 $(function() {
-    var result = new Result();
+  var result = new Result();
 
-    $("#find-score").click(function() {
-      var $button = $(this);
-      $("#error-container").hide();
-      $button.addClass("loading");
-      $button.attr('disabled', 'disabled');
-      result.hide();
+  $("#find-score").click(function() {
+    var $button = $(this);
+    $("#error-container").hide();
+    $button.addClass("loading");
+    $button.attr('disabled', 'disabled');
+    result.hide();
 
-      var urlOrSlug = $("#score-url").val();
-      if (!urlOrSlug) {
-        urlOrSlug = "afnetworking/afnetworking";
-      }
-      ScoreAPI.find(urlOrSlug, function(score) {
-        window.score = score;
-        result.show(score);
-        $button.removeClass("loading");
-        $button.removeAttr('disabled');
-      }, function() {
-        // an error happened :(
-        $button.removeClass("loading");
-        $button.removeAttr('disabled');
-        $("#error-container").show();
-      })
-    });
+    var urlOrSlug = $("#score-url").val();
+    if (!urlOrSlug) {
+      urlOrSlug = "afnetworking/afnetworking";
+    }
+    ScoreAPI.find(urlOrSlug, function(score) {
+      window.score = score;
+      result.show(score);
+      $button.removeClass("loading");
+      $button.removeAttr('disabled');
+    }, function() {
+      // an error happened :(
+      $button.removeClass("loading");
+      $button.removeAttr('disabled');
+      $("#error-container").show();
+    })
+  });
+
+  if (QueryString.url) {
+    $("#score-url").val(QueryString.url);
+    $("#find-score").click();
+  }
 });
