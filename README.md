@@ -1,6 +1,7 @@
 # ReadmeScore
 
 [![Build Status](https://travis-ci.org/clayallsopp/readme-score.svg)](https://travis-ci.org/clayallsopp/readme-score)
+[![Readme Score](http://readme-score-api.herokuapp.com/score.svg?url=clayallsopp/readme-score)](http://clayallsopp.github.io/readme-score?url=clayallsopp/readme-score)
 
 Gives a complexity score for a README.
 
