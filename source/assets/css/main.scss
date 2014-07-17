@@ -258,11 +258,12 @@ $screen-xs-max: 768px;
 
     .embed-row input {
         @include input-style;
+        font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+        font-size: 13pt;
     }
 
     .embed-row button {
         @include button-style;
-        @include regular;
         font-size: 20px;
         line-height: 26px;
         @media (max-width: $screen-xs-max) {
