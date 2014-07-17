@@ -158,10 +158,10 @@ var Result = function() {
       breakdowns.push({description: description, score: score, possible: possible});
     };
     breakdowns.sort(function(a, b) {
-      if (a.score == b.score) {
-        return a.possible > b.possible;
+      if (a.score === b.score) {
+        return a.possible - b.possible;
       }
-      return a.score > b.score;
+      return a.score - b.score;
     });
     for (var i = breakdowns.length - 1; i >= 0; i--) {
       var item = breakdowns[i];
