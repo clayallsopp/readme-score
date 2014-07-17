@@ -538,25 +538,30 @@ hr {
   /* line 399, ../assets/css/main.scss */
   .jumbotron .input-col {
     position: relative; }
+  /* line 403, ../assets/css/main.scss */
+  .jumbotron .hint {
+    font-family: "BrandonGrotesque-Regular", Avenir, Arial, sans-serif;
+    font-size: 14px;
+    margin-bottom: 0px; }
 
-/* line 404, ../assets/css/main.scss */
+/* line 410, ../assets/css/main.scss */
 .faq-container {
   padding-bottom: 20px;
   font-size: 18px;
   line-height: 30px;
   color: #717171; }
   @media (max-width: 768px) {
-    /* line 404, ../assets/css/main.scss */
+    /* line 410, ../assets/css/main.scss */
     .faq-container {
       font-size: 14px;
       line-height: 23px; } }
-  /* line 415, ../assets/css/main.scss */
+  /* line 421, ../assets/css/main.scss */
   .faq-container h3 {
     color: #34495e; }
-  /* line 419, ../assets/css/main.scss */
+  /* line 425, ../assets/css/main.scss */
   .faq-container .answer {
     font-family: "BrandonGrotesque-Light", Avenir, Arial, sans-serif; }
 
-/* line 424, ../assets/css/main.scss */
+/* line 430, ../assets/css/main.scss */
 #error-container {
   margin-top: 20px; }
