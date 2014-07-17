@@ -79,7 +79,7 @@ var Score = function(data) {
 var ScoreAPI = {
   find: function(urlOrSlug, callback, errorCallback) {
     var url = "http://readme-score-api.herokuapp.com/score";
-    $.get(url, {url: urlOrSlug, human_breakdown: "true"}, function(data, textStatus) {
+    $.get(url, {url: urlOrSlug, human_breakdown: "true", force: "true"}, function(data, textStatus) {
         if (textStatus === 'error' || textStatus === 'timeout' || data.error) {
           errorCallback();
         }
