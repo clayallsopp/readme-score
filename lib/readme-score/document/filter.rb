@@ -59,7 +59,8 @@ module ReadmeScore
 
         def remove_anchor_images_containing_url(url_fragment)
           @noko.search('a').each {|a|
-            if a['href'].downcase.include?(url_fragment.downcase)
+            href = a['href']
+            if href && href.downcase.include?(url_fragment.downcase)
               a.remove unless a.search('img').empty?
             end
           }
