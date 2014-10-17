@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    readme-score (0.0.1)
+    readme-score (0.0.2)
       nokogiri (>= 1.6.0)
       octokit (>= 3.2.0)
       redcarpet (>= 3.1.0)
