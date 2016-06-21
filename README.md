@@ -5,7 +5,7 @@
 
 Gives a complexity score for a README.
 
-Check scores of any repo in your browser: [http://scoreme.report](http://scoreme.report)
+Check scores of any repo in your browser: [http://clayallsopp.github.io/readme-score](http://clayallsopp.github.io/readme-score)
 
 There's an [HTTP API too](http://github.com/clayallsopp/readme-score-api)!
 
