@@ -50,7 +50,9 @@ module ReadmeScore
           end
         else
           @markdown = Loader.markdown_url?(@url)
-          @response ||= Unirest.get @url
+          @response ||= OpenStruct.new.tap {|o|
+            o.body = Net::HTTP.get(URI(@url))
+          }
         end
       end
 
@@ -65,7 +67,9 @@ module ReadmeScore
       def load_via_github_approximation!
         @github_approximation_url ||= GithubReadmeFinder.new(url).find_url
         @markdown = Loader.markdown_url?(@github_approximation_url)
-        @response ||= Unirest.get @github_approximation_url
+        @response ||= OpenStruct.new.tap {|o|
+          o.body = Net::HTTP.get(URI(@github_approximation_url))
+        }
       end
 
       def html

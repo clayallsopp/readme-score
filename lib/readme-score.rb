@@ -1,7 +1,9 @@
 require 'nokogiri'
-require 'unirest'
+require 'net/http'
 require 'redcarpet'
 require 'octokit'
+require 'uri'
+require 'pathname'
 
 require 'json'
 
