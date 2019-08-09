@@ -55,7 +55,7 @@ score.total_score
 # => 95
 ```
 
-Pass in a Github Repo:
+Pass in a GitHub Repo:
 
 ```ruby
 score = ReadmeScore.for("afnetworking/afnetworking")
@@ -76,12 +76,12 @@ score.total_score
 
 ### Settings
 
-- `ReadmeScore.use_github_api = <boolean>` - whether or not to use the Github API when loading a Github repo's readme. If `false`, will attempt to find the correct readme URL without the API (which could fail unexpectedly). Defaults to `true`
+- `ReadmeScore.use_github_api = <boolean>` - whether or not to use the GitHub API when loading a GitHub repo's readme. If `false`, will attempt to find the correct readme URL without the API (which could fail unexpectedly). Defaults to `true`
 
-- `ReadmeScore.github_api_token = <token>` - a token to use with the Github API. Supercedes the ENV variable.
+- `ReadmeScore.github_api_token = <token>` - a token to use with the GitHub API. Supercedes the ENV variable.
 
 ### Environment Variables
 
 | ENV                                                          | Description |
 |---------------------------------------------------------------|-------|
-| READMESCORE_GITHUB_TOKEN                     | If scoring a Github repo, ReadmeScore will try to grab the canonical representation via the Github API. By default, [unauthenticated requests are limited](https://developer.github.com/v3/#rate-limiting) to 60/hour. Set this env variable to increase that limited to 5k/hour.    |
+| READMESCORE_GITHUB_TOKEN                     | If scoring a GitHub repo, ReadmeScore will try to grab the canonical representation via the GitHub API. By default, [unauthenticated requests are limited](https://developer.github.com/v3/#rate-limiting) to 60/hour. Set this env variable to increase that limited to 5k/hour.    |
